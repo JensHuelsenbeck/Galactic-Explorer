@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.hannes.starwars.ui.theme.basic
+import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 
 @Composable
@@ -22,13 +23,14 @@ fun CategoryTitle(
             text = text,
             fontFamily = basic,
             style = MaterialTheme.typography.headlineSmall,
-            color = Color.Yellow,
+            color = starWarsOrange,
         )
         Text(
             text = " $text",
             fontFamily = starwarsfont,
-            color = Color.Yellow,
+            color = starWarsOrange.copy(alpha = 0.5f),
             style = MaterialTheme.typography.bodyLarge,
+
         )
         Spacer(Modifier.weight(1f))
     }

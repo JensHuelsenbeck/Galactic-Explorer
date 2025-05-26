@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hannes.starwars.R
 import com.hannes.starwars.ui.theme.basic
+import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 
 @Composable
@@ -33,12 +34,12 @@ fun Header(modifier: Modifier = Modifier) {
         text = "Galaxy Explorer",
         fontFamily = basic,
         style = MaterialTheme.typography.headlineSmall,
-        color = Color.Yellow,
+        color = starWarsOrange,
     )
     Text(
         text = "Galaxy Explorer",
         fontFamily = starwarsfont,
-        color = Color.Yellow,
+        color = starWarsOrange,
         fontSize = 17.sp
     )
 

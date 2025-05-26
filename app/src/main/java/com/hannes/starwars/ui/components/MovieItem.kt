@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.hannes.starwars.data.model.Film
+import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 import java.time.OffsetDateTime
 
@@ -74,7 +75,7 @@ fun MovieItem(
             Text(
                 text = "Episode ${episodeNumb(movie)}",
                 fontSize = 20.sp,
-                color = Color.Yellow,
+                color = starWarsOrange,
                 fontFamily = starwarsfont
             )
             Row(verticalAlignment = Alignment.Bottom) {

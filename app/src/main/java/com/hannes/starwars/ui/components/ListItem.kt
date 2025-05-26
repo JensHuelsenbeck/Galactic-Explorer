@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 
 @Composable
@@ -37,7 +38,7 @@ fun ListItem(
             Text(
                 text = title,
                 fontSize = 20.sp,
-                color = Color.Yellow,
+                color = starWarsOrange,
                 fontFamily = starwarsfont
             )
             Spacer(Modifier.weight(1f))
