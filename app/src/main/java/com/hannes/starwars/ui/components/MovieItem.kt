@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFrom
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -47,8 +48,10 @@ fun MovieItem(
 ) {
     Card(
         modifier = modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(vertical = 4.dp)
+            .padding(horizontal = 6.dp)
+            .fillMaxWidth()
+            .width(250.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFF1C1C1E)
         ),
@@ -56,16 +59,15 @@ fun MovieItem(
         elevation = CardDefaults.cardElevation(8.dp)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(8.dp)
         ) {
             AsyncImage(
                 model = movie.filmImage,
                 contentDescription = "Film Poster",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp)
                     .clip(RoundedCornerShape(12.dp)),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Fit
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
