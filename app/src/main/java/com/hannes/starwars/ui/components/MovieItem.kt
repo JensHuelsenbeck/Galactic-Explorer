@@ -14,6 +14,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -76,18 +77,20 @@ fun MovieItem(
                 color = Color.Yellow,
                 fontFamily = starwarsfont
             )
-            Text(
-                text = movie.title,
-                fontSize = 22.sp,
-                color = Color.White,
-                fontWeight = FontWeight.SemiBold,
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = extractYearFromDate(movie.release_date),
-                color = Color.Gray,
-                fontSize = 16.sp
-            )
+            Row(verticalAlignment = Alignment.Bottom) {
+                Text(
+                    text = movie.title,
+                    fontSize = 18.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.SemiBold,
+                )
+                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = extractYearFromDate(movie.release_date),
+                    color = Color.Gray,
+                    fontSize = 16.sp
+                )
+            }
         }
     }
 }

@@ -238,7 +238,7 @@ val dummyPlanets: List<Planet> = listOf(
 
 val dummyCharacters: List<Character> = listOf(
     Character(
-        name = "Luke Skywalker",
+        name = "luke skywalker",
         height = "172",
         mass = "77",
         hair_color = "blond",
@@ -267,7 +267,7 @@ val dummyCharacters: List<Character> = listOf(
         url = "https://swapi.dev/api/people/1/"
     ),
     Character(
-        name = "Leia Organa",
+        name = "leia organa",
         height = "150",
         mass = "49",
         hair_color = "brown",
@@ -290,7 +290,7 @@ val dummyCharacters: List<Character> = listOf(
         url = "https://swapi.dev/api/people/5/"
     ),
     Character(
-        name = "Han Solo",
+        name = "han solo",
         height = "180",
         mass = "80",
         hair_color = "brown",
@@ -312,7 +312,7 @@ val dummyCharacters: List<Character> = listOf(
         url = "https://swapi.dev/api/people/14/"
     ),
     Character(
-        name = "Obi-Wan Kenobi",
+        name = "obi-wan kenobi",
         height = "182",
         mass = "77",
         hair_color = "auburn, white",
@@ -337,7 +337,7 @@ val dummyCharacters: List<Character> = listOf(
         url = "https://swapi.dev/api/people/10/"
     ),
     Character(
-        name = "Chewbacca",
+        name = "chewbacca",
         height = "228",
         mass = "112",
         hair_color = "brown",
