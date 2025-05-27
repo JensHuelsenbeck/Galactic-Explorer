@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.hannes.starwars.ui.theme.Surface
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 
@@ -27,7 +28,7 @@ fun ListItem(
             .fillMaxWidth()
             .padding(horizontal = 8.dp, vertical = 4.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFF1C1C1E)
+            containerColor = Surface
         )
     ) {
         Row(

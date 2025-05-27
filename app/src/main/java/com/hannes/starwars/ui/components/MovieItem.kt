@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.hannes.starwars.data.model.Film
+import com.hannes.starwars.ui.theme.Surface
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 import java.time.OffsetDateTime
@@ -55,7 +56,7 @@ fun MovieItem(
             .fillMaxWidth()
             .width(250.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFF1C1C1E)
+            containerColor = Surface
         ),
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(8.dp)
