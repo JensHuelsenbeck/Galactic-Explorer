@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.hannes.starwars.data.datasource.dummyMovie
 import com.hannes.starwars.ui.components.MovieItem
+import com.hannes.starwars.ui.screens.DetailScreen
 import com.hannes.starwars.ui.screens.HomeScreen
 import com.hannes.starwars.ui.theme.StarWarsTheme
 
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
             StarWarsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(Modifier.padding(innerPadding)) {
-                        HomeScreen()
+                        DetailScreen()
                     }
                 }
             }
