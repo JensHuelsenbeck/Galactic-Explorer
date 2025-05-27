@@ -20,7 +20,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.hannes.starwars.data.model.Film
 import com.hannes.starwars.ui.theme.starWarsOrange
@@ -33,6 +32,7 @@ fun extractYearFromDate(dateString: String): String {
     return dateString.take(4)
 }
 
+val image = "https://images3.alphacoders.com/111/1115520.jpg"
 
 @Composable
 fun MovieCard(
@@ -55,9 +55,9 @@ fun MovieCard(
         Column(
             modifier = Modifier.padding(8.dp)
         ) {
-            /*
+
             AsyncImage(
-                model = movie.filmImage,
+                model = image,
                 contentDescription = "Film Poster",
                 modifier = Modifier
                     .fillMaxWidth()
@@ -65,7 +65,6 @@ fun MovieCard(
                 contentScale = ContentScale.Fit
             )
 
-             */
             Spacer(modifier = Modifier.height(12.dp))
             Text(
                 text = "Episode ${viewModel.episodeNumb(movie)}",
