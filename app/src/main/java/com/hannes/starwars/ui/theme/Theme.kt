@@ -10,13 +10,13 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
-private val DarkColorScheme = darkColorScheme(
+/*private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
     secondary = PurpleGrey80,
     tertiary = Pink80,
     background = globalBackground
 )
-/*
+*//*
 primary = Primary,
 onPrimary = Color.White,
 primaryContainer = PrimaryContainerLight,
@@ -26,7 +26,7 @@ surface = SurfaceLight,
 onSurface = Color.Black,
 secondaryContainer = SecondaryContainerLight,
 onSecondaryContainer = Color.Black
- */
+ *//*
 
 private val LightColorScheme = lightColorScheme(
     primary = Purple80,
@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink80,
     background = globalBackground
 
-    /* Other default colors to override
+    *//* Other default colors to override
     background = Color(0xFFFFFBFE),
     surface = Color(0xFFFFFBFE),
     onPrimary = Color.White,
@@ -42,28 +42,23 @@ private val LightColorScheme = lightColorScheme(
     onTertiary = Color.White,
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
-    */
+    *//*
+)*/
+
+private val AppColorScheme = darkColorScheme(
+    primary = starWarsOrange,
+    onPrimary = OnPrimary,
+    background = globalBackground,
+    onBackground = OnBackground,
+    surface = Surface,
+    onSurface = OnSurface
 )
 
 @Composable
-fun StarWarsTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
-) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+fun StarWarsTheme(content: @Composable () -> Unit) {
 
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = AppColorScheme,
         typography = Typography,
         content = content
     )
