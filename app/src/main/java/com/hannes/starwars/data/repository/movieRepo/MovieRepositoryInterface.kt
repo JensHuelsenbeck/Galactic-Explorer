@@ -1,4 +1,4 @@
-package com.hannes.starwars.data.repository
+package com.hannes.starwars.data.repository.movieRepo
 
 import com.hannes.starwars.data.model.Film
 

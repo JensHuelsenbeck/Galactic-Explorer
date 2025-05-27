@@ -16,5 +16,5 @@ data class Film(
     val edited: String,
     val url: String,
 
-    val filmImage: String
+    val filmImage: String?
 )

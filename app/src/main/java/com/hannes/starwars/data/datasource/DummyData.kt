@@ -1,81 +1,43 @@
 package com.hannes.starwars.data.datasource
 
+import com.hannes.starwars.data.model.Character
 import com.hannes.starwars.data.model.Film
 import com.hannes.starwars.data.model.Planet
-import com.hannes.starwars.data.model.Character
+import com.hannes.starwars.data.model.Species
 
-val dummyMovie: List<Film> = listOf<Film>(
-
-    Film(
-    title = "A New Hope",
-    episode_id = 4,
-    opening_crawl = "",
-    director = "George Lucas",
-    producer = "Gary Kurtz, Rick McCallum",
-    release_date = "1977-05-25",
-    characters = listOf<String>(
-        "https://swapi.py4e.com/api/people/1/",
-        "https://swapi.py4e.com/api/people/2/",
-    ),
-    planets = listOf<String>(
-        "https://swapi.py4e.com/api/planets/1/",
-        "https://swapi.py4e.com/api/planets/2/",
-        "https://swapi.py4e.com/api/planets/3/"
-    ),
-    starships = listOf<String>(
-        "https://swapi.py4e.com/api/vehicles/4/",
-        "https://swapi.py4e.com/api/vehicles/6/",
-        "https://swapi.py4e.com/api/vehicles/7/",
-        "https://swapi.py4e.com/api/vehicles/8/"
-    ),
-    vehicles = listOf<String>(
-        "https://swapi.py4e.com/api/vehicles/4/",
-        "https://swapi.py4e.com/api/vehicles/6/",
-        "https://swapi.py4e.com/api/vehicles/7/",
-        "https://swapi.py4e.com/api/vehicles/8/"
-    ),
-    species = listOf<String>(
-        "https://swapi.py4e.com/api/species/1/",
-        "https://swapi.py4e.com/api/species/2/",
-        "https://swapi.py4e.com/api/species/3/",
-        "https://swapi.py4e.com/api/species/4/",
-        "https://swapi.py4e.com/api/species/5/"
-    ),
-    created = "2014-12-10T14:23:31.880000Z",
-    edited = "2014-12-20T19:49:45.256000Z",
-    url = "https://swapi.py4e.com/api/films/1/",
-    filmImage = "https://imgs.search.brave.com/mQMVXXyfYbGmBgepmlQVlMc5Dav4hL8qwTHpox6DSlY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vTHl6YXMw/Q3Z3LXdVWFotMXNa/TlA2OWtpOWM5Y0Uy/YU9UYmNYeUtzZkdE/Yy9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlw/YldGbi9aWE16TG1G/c2NHaGhZMjlrL1pY/SnpMbU52YlM4eE1U/RXYvTVRFeE5UVXlN/QzVxY0dj"
-),
-
+val dummyMovie: List<Film> = listOf(
+    // --- Episode IV ---------------------------------------------------------
     Film(
         title = "A New Hope",
         episode_id = 4,
-        opening_crawl = "",
+        opening_crawl = "It is a period of civil war…",          // gekürzt
         director = "George Lucas",
         producer = "Gary Kurtz, Rick McCallum",
         release_date = "1977-05-25",
-        characters = listOf<String>(
+        characters = listOf(
             "https://swapi.py4e.com/api/people/1/",
             "https://swapi.py4e.com/api/people/2/",
+            "https://swapi.py4e.com/api/people/3/",
+            /* …weitere… */
         ),
-        planets = listOf<String>(
+        planets = listOf(
             "https://swapi.py4e.com/api/planets/1/",
             "https://swapi.py4e.com/api/planets/2/",
             "https://swapi.py4e.com/api/planets/3/"
         ),
-        starships = listOf<String>(
+        starships = listOf(
+            "https://swapi.py4e.com/api/starships/2/",
+            "https://swapi.py4e.com/api/starships/3/",
+            "https://swapi.py4e.com/api/starships/5/",
+            /* …weitere… */
+        ),
+        vehicles = listOf(
             "https://swapi.py4e.com/api/vehicles/4/",
             "https://swapi.py4e.com/api/vehicles/6/",
             "https://swapi.py4e.com/api/vehicles/7/",
             "https://swapi.py4e.com/api/vehicles/8/"
         ),
-        vehicles = listOf<String>(
-            "https://swapi.py4e.com/api/vehicles/4/",
-            "https://swapi.py4e.com/api/vehicles/6/",
-            "https://swapi.py4e.com/api/vehicles/7/",
-            "https://swapi.py4e.com/api/vehicles/8/"
-        ),
-        species = listOf<String>(
+        species = listOf(
             "https://swapi.py4e.com/api/species/1/",
             "https://swapi.py4e.com/api/species/2/",
             "https://swapi.py4e.com/api/species/3/",
@@ -83,52 +45,221 @@ val dummyMovie: List<Film> = listOf<Film>(
             "https://swapi.py4e.com/api/species/5/"
         ),
         created = "2014-12-10T14:23:31.880000Z",
-        edited = "2014-12-20T19:49:45.256000Z",
-        url = "https://swapi.py4e.com/api/films/1/",
-        filmImage = "https://imgs.search.brave.com/mQMVXXyfYbGmBgepmlQVlMc5Dav4hL8qwTHpox6DSlY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vTHl6YXMw/Q3Z3LXdVWFotMXNa/TlA2OWtpOWM5Y0Uy/YU9UYmNYeUtzZkdE/Yy9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlw/YldGbi9aWE16TG1G/c2NHaGhZMjlrL1pY/SnpMbU52YlM4eE1U/RXYvTVRFeE5UVXlN/QzVxY0dj"
+        edited  = "2014-12-20T19:49:45.256000Z",
+        url     = "https://swapi.py4e.com/api/films/1/",
+        filmImage = "https://lumiere-a.akamaihd.net/v1/images/poster-star-wars-episode-4_a29b329a.jpeg"
     ),
 
+    // --- Episode V ----------------------------------------------------------
     Film(
-        title = "A New Hope",
-        episode_id = 4,
-        opening_crawl = "",
-        director = "George Lucas",
+        title = "The Empire Strikes Back",
+        episode_id = 5,
+        opening_crawl = "It is a dark time for the Rebellion…",
+        director = "Irvin Kershner",
         producer = "Gary Kurtz, Rick McCallum",
-        release_date = "1977-05-25",
-        characters = listOf<String>(
+        release_date = "1980-05-17",
+        characters = listOf(
             "https://swapi.py4e.com/api/people/1/",
             "https://swapi.py4e.com/api/people/2/",
+            /* … */
         ),
-        planets = listOf<String>(
-            "https://swapi.py4e.com/api/planets/1/",
-            "https://swapi.py4e.com/api/planets/2/",
-            "https://swapi.py4e.com/api/planets/3/"
+        planets = listOf(
+            "https://swapi.py4e.com/api/planets/4/",
+            "https://swapi.py4e.com/api/planets/5/",
+            "https://swapi.py4e.com/api/planets/6/",
+            "https://swapi.py4e.com/api/planets/27/"
         ),
-        starships = listOf<String>(
-            "https://swapi.py4e.com/api/vehicles/4/",
-            "https://swapi.py4e.com/api/vehicles/6/",
-            "https://swapi.py4e.com/api/vehicles/7/",
-            "https://swapi.py4e.com/api/vehicles/8/"
+        starships = listOf(
+            "https://swapi.py4e.com/api/starships/3/",
+            "https://swapi.py4e.com/api/starships/10/",
+            /* … */
         ),
-        vehicles = listOf<String>(
-            "https://swapi.py4e.com/api/vehicles/4/",
-            "https://swapi.py4e.com/api/vehicles/6/",
-            "https://swapi.py4e.com/api/vehicles/7/",
-            "https://swapi.py4e.com/api/vehicles/8/"
+        vehicles = listOf(
+            "https://swapi.py4e.com/api/vehicles/8/",
+            "https://swapi.py4e.com/api/vehicles/14/",
+            /* … */
         ),
-        species = listOf<String>(
+        species = listOf(
             "https://swapi.py4e.com/api/species/1/",
             "https://swapi.py4e.com/api/species/2/",
             "https://swapi.py4e.com/api/species/3/",
-            "https://swapi.py4e.com/api/species/4/",
-            "https://swapi.py4e.com/api/species/5/"
+            "https://swapi.py4e.com/api/species/6/",
+            "https://swapi.py4e.com/api/species/7/"
         ),
-        created = "2014-12-10T14:23:31.880000Z",
-        edited = "2014-12-20T19:49:45.256000Z",
-        url = "https://swapi.py4e.com/api/films/1/",
-        filmImage = "https://imgs.search.brave.com/mQMVXXyfYbGmBgepmlQVlMc5Dav4hL8qwTHpox6DSlY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vTHl6YXMw/Q3Z3LXdVWFotMXNa/TlA2OWtpOWM5Y0Uy/YU9UYmNYeUtzZkdE/Yy9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlw/YldGbi9aWE16TG1G/c2NHaGhZMjlrL1pY/SnpMbU52YlM4eE1U/RXYvTVRFeE5UVXlN/QzVxY0dj"
+        created = "2014-12-12T11:26:24.656000Z",
+        edited  = "2014-12-15T13:07:53.386000Z",
+        url     = "https://swapi.py4e.com/api/films/2/",
+        filmImage = "https://lumiere-a.akamaihd.net/v1/images/image_24b0a6f0.jpeg"
+    ),
+
+    // --- Episode VI ---------------------------------------------------------
+    Film(
+        title = "Return of the Jedi",
+        episode_id = 6,
+        opening_crawl = "Luke Skywalker has returned to his home planet…",
+        director = "Richard Marquand",
+        producer = "Howard G. Kazanjian, George Lucas, Rick McCallum",
+        release_date = "1983-05-25",
+        characters = listOf(
+            "https://swapi.py4e.com/api/people/1/",
+            "https://swapi.py4e.com/api/people/2/",
+            /* … */
+        ),
+        planets = listOf(
+            "https://swapi.py4e.com/api/planets/4/",
+            "https://swapi.py4e.com/api/planets/5/",
+            "https://swapi.py4e.com/api/planets/6/",
+            "https://swapi.py4e.com/api/planets/27/"
+        ),
+        starships = listOf(
+            "https://swapi.py4e.com/api/starships/3/",
+            "https://swapi.py4e.com/api/starships/10/",
+            /* … */
+        ),
+        vehicles = listOf(
+            "https://swapi.py4e.com/api/vehicles/8/",
+            "https://swapi.py4e.com/api/vehicles/14/",
+            /* … */
+        ),
+        species = listOf(
+            "https://swapi.py4e.com/api/species/1/",
+            "https://swapi.py4e.com/api/species/2/",
+            "https://swapi.py4e.com/api/species/3/",
+            "https://swapi.py4e.com/api/species/6/",
+            "https://swapi.py4e.com/api/species/7/"
+        ),
+        created = "2014-12-12T11:26:24.656000Z",
+        edited  = "2014-12-15T13:07:53.386000Z",
+        url     = "https://swapi.py4e.com/api/films/2/",
+        filmImage = "https://lumiere-a.akamaihd.net/v1/images/image_24b0a6f0.jpeg"
+    ),
+
+    // --- Episode I ----------------------------------------------------------
+    Film(
+        title = "The Phantom Menace",
+        episode_id = 1,
+        opening_crawl = "Turmoil has engulfed the Galactic Republic…",
+        director = "George Lucas",
+        producer = "Rick McCallum",
+        release_date = "1999-05-19",
+        characters = listOf(
+            "https://swapi.py4e.com/api/people/1/",
+            "https://swapi.py4e.com/api/people/2/",
+            /* … */
+        ),
+        planets = listOf(
+            "https://swapi.py4e.com/api/planets/4/",
+            "https://swapi.py4e.com/api/planets/5/",
+            "https://swapi.py4e.com/api/planets/6/",
+            "https://swapi.py4e.com/api/planets/27/"
+        ),
+        starships = listOf(
+            "https://swapi.py4e.com/api/starships/3/",
+            "https://swapi.py4e.com/api/starships/10/",
+            /* … */
+        ),
+        vehicles = listOf(
+            "https://swapi.py4e.com/api/vehicles/8/",
+            "https://swapi.py4e.com/api/vehicles/14/",
+            /* … */
+        ),
+        species = listOf(
+            "https://swapi.py4e.com/api/species/1/",
+            "https://swapi.py4e.com/api/species/2/",
+            "https://swapi.py4e.com/api/species/3/",
+            "https://swapi.py4e.com/api/species/6/",
+            "https://swapi.py4e.com/api/species/7/"
+        ),
+        created = "2014-12-12T11:26:24.656000Z",
+        edited  = "2014-12-15T13:07:53.386000Z",
+        url     = "https://swapi.py4e.com/api/films/2/",
+        filmImage = "https://lumiere-a.akamaihd.net/v1/images/image_24b0a6f0.jpeg"
+    ),
+    // --- Episode II ---------------------------------------------------------
+    Film(
+        title = "Attack of the Clones",
+        episode_id = 2,
+        opening_crawl = "There is unrest in the Galactic Senate…",
+        director = "George Lucas",
+        producer = "Rick McCallum",
+        release_date = "2002-05-16",
+        characters = listOf(
+            "https://swapi.py4e.com/api/people/1/",
+            "https://swapi.py4e.com/api/people/2/",
+            /* … */
+        ),
+        planets = listOf(
+            "https://swapi.py4e.com/api/planets/4/",
+            "https://swapi.py4e.com/api/planets/5/",
+            "https://swapi.py4e.com/api/planets/6/",
+            "https://swapi.py4e.com/api/planets/27/"
+        ),
+        starships = listOf(
+            "https://swapi.py4e.com/api/starships/3/",
+            "https://swapi.py4e.com/api/starships/10/",
+            /* … */
+        ),
+        vehicles = listOf(
+            "https://swapi.py4e.com/api/vehicles/8/",
+            "https://swapi.py4e.com/api/vehicles/14/",
+            /* … */
+        ),
+        species = listOf(
+            "https://swapi.py4e.com/api/species/1/",
+            "https://swapi.py4e.com/api/species/2/",
+            "https://swapi.py4e.com/api/species/3/",
+            "https://swapi.py4e.com/api/species/6/",
+            "https://swapi.py4e.com/api/species/7/"
+        ),
+        created = "2014-12-12T11:26:24.656000Z",
+        edited  = "2014-12-15T13:07:53.386000Z",
+        url     = "https://swapi.py4e.com/api/films/2/",
+        filmImage = "https://lumiere-a.akamaihd.net/v1/images/image_24b0a6f0.jpeg"
+    ),
+
+    // --- Episode III --------------------------------------------------------
+    Film(
+        title = "Revenge of the Sith",
+        episode_id = 3,
+        opening_crawl = "War! The Republic is crumbling under attacks by the ruthless Sith Lord…",
+        director = "George Lucas",
+        producer = "Rick McCallum",
+        release_date = "2005-05-19",
+        characters = listOf(
+            "https://swapi.py4e.com/api/people/1/",
+            "https://swapi.py4e.com/api/people/2/",
+            /* … */
+        ),
+        planets = listOf(
+            "https://swapi.py4e.com/api/planets/4/",
+            "https://swapi.py4e.com/api/planets/5/",
+            "https://swapi.py4e.com/api/planets/6/",
+            "https://swapi.py4e.com/api/planets/27/"
+        ),
+        starships = listOf(
+            "https://swapi.py4e.com/api/starships/3/",
+            "https://swapi.py4e.com/api/starships/10/",
+            /* … */
+        ),
+        vehicles = listOf(
+            "https://swapi.py4e.com/api/vehicles/8/",
+            "https://swapi.py4e.com/api/vehicles/14/",
+            /* … */
+        ),
+        species = listOf(
+            "https://swapi.py4e.com/api/species/1/",
+            "https://swapi.py4e.com/api/species/2/",
+            "https://swapi.py4e.com/api/species/3/",
+            "https://swapi.py4e.com/api/species/6/",
+            "https://swapi.py4e.com/api/species/7/"
+        ),
+        created = "2014-12-12T11:26:24.656000Z",
+        edited  = "2014-12-15T13:07:53.386000Z",
+        url     = "https://swapi.py4e.com/api/films/2/",
+        filmImage = "https://lumiere-a.akamaihd.net/v1/images/image_24b0a6f0.jpeg"
     )
 )
+
 
 val dummyPlanets: List<Planet> = listOf(
     Planet(
@@ -358,5 +489,120 @@ val dummyCharacters: List<Character> = listOf(
         created = "2014-12-10T16:42:45.066000Z",
         edited = "2014-12-20T21:17:50.332000Z",
         url = "https://swapi.dev/api/people/13/"
+    )
+)
+
+val dummySpecies: List<Species> = listOf(
+    // --- Species 1 ----------------------------------------------------------
+    Species(
+        name = "Human",
+        classification = "mammal",
+        designation = "sentient",
+        average_height = "180",
+        skin_colors = "caucasian, black, asian, hispanic",
+        hair_colors = "blonde, brown, black, red",
+        eye_colors = "brown, blue, green, hazel, grey, amber",
+        average_lifespan = "120",
+        homeworld = "https://swapi.py4e.com/api/planets/9/",
+        language = "Galactic Basic",
+        people = listOf(                         // gekürzt!
+            "https://swapi.py4e.com/api/people/1/",
+            "https://swapi.py4e.com/api/people/4/",
+            "https://swapi.py4e.com/api/people/5/"
+        ),
+        films = listOf(
+            "https://swapi.py4e.com/api/films/1/",
+            "https://swapi.py4e.com/api/films/2/",
+            "https://swapi.py4e.com/api/films/3/",
+            "https://swapi.py4e.com/api/films/4/",
+            "https://swapi.py4e.com/api/films/5/",
+            "https://swapi.py4e.com/api/films/6/",
+            "https://swapi.py4e.com/api/films/7/"
+        ),
+        created = "2014-12-10T13:52:11.567000Z",
+        edited  = "2014-12-20T21:36:42.136000Z",
+        url     = "https://swapi.py4e.com/api/species/1/"
+    ),
+
+    // --- Species 2 ----------------------------------------------------------
+    Species(
+        name = "Droid",
+        classification = "artificial",
+        designation = "sentient",
+        average_height = "n/a",
+        skin_colors = "n/a",
+        hair_colors = "n/a",
+        eye_colors = "n/a",
+        average_lifespan = "indefinite",
+        homeworld = null,                       // laut API
+        language = "n/a",
+        people = listOf(
+            "https://swapi.py4e.com/api/people/2/",
+            "https://swapi.py4e.com/api/people/3/",
+            "https://swapi.py4e.com/api/people/8/"
+        ),
+        films = listOf(
+            "https://swapi.py4e.com/api/films/1/",
+            "https://swapi.py4e.com/api/films/2/",
+            "https://swapi.py4e.com/api/films/3/",
+            "https://swapi.py4e.com/api/films/4/",
+            "https://swapi.py4e.com/api/films/5/",
+            "https://swapi.py4e.com/api/films/6/",
+            "https://swapi.py4e.com/api/films/7/"
+        ),
+        created = "2014-12-10T15:16:16.259000Z",
+        edited  = "2014-12-20T21:36:42.139000Z",
+        url     = "https://swapi.py4e.com/api/species/2/"
+    ),
+
+    // --- Species 3 ----------------------------------------------------------
+    Species(
+        name = "Wookiee",
+        classification = "mammal",
+        designation = "sentient",
+        average_height = "210",
+        skin_colors = "gray",
+        hair_colors = "black, brown",
+        eye_colors = "blue, green, yellow, brown, golden, red",
+        average_lifespan = "400",
+        homeworld = "https://swapi.py4e.com/api/planets/14/",
+        language = "Shyriiwook",
+        people = listOf(
+            "https://swapi.py4e.com/api/people/13/",
+            "https://swapi.py4e.com/api/people/80/"
+        ),
+        films = listOf(
+            "https://swapi.py4e.com/api/films/1/",
+            "https://swapi.py4e.com/api/films/2/",
+            "https://swapi.py4e.com/api/films/3/",
+            "https://swapi.py4e.com/api/films/6/",
+            "https://swapi.py4e.com/api/films/7/"
+        ),
+        created = "2014-12-10T16:44:31.486000Z",
+        edited  = "2014-12-20T21:36:42.142000Z",
+        url     = "https://swapi.py4e.com/api/species/3/"
+    ),
+
+    // --- Species 4 ----------------------------------------------------------
+    Species(
+        name = "Rodian",
+        classification = "sentient",
+        designation = "reptilian",
+        average_height = "170",
+        skin_colors = "green, blue",
+        hair_colors = "n/a",
+        eye_colors = "black",
+        average_lifespan = "unknown",
+        homeworld = "https://swapi.py4e.com/api/planets/23/",
+        language = "Galatic Basic",
+        people = listOf(
+            "https://swapi.py4e.com/api/people/15/"
+        ),
+        films = listOf(
+            "https://swapi.py4e.com/api/films/1/"
+        ),
+        created = "2014-12-10T17:05:26.471000Z",
+        edited  = "2014-12-20T21:36:42.144000Z",
+        url     = "https://swapi.py4e.com/api/species/4/"
     )
 )
