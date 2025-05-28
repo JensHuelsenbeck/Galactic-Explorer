@@ -4,9 +4,9 @@ import com.hannes.starwars.data.model.Film
 import com.hannes.starwars.data.remote.ApiService
 
 
-class MovieRepository(
+class FilmRepository(
     private val apiService: ApiService
-) : MovieRepositoryInterface {
+) : FilmRepositoryInterface {
     override suspend fun getMovies(): List<Film> {
         val response = apiService.getAllFilms()
         if (response.isSuccessful) {
