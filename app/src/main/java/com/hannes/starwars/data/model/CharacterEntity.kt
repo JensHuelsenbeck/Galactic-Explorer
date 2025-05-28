@@ -3,7 +3,7 @@ package com.hannes.starwars.data.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "character")
+@Entity(tableName = "characters")
 data class CharacterEntity(
 
     @PrimaryKey(autoGenerate = true)
