@@ -2,14 +2,14 @@ package com.hannes.starwars.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.hannes.starwars.data.model.Character
-import com.hannes.starwars.data.model.Film
-import com.hannes.starwars.data.model.Planet
-import com.hannes.starwars.data.model.Species
 import android.content.Context
 import androidx.room.Room
+import com.hannes.starwars.data.model.FilmEntity
+import com.hannes.starwars.data.model.PlanetEntity
+import com.hannes.starwars.data.model.CharacterEntity
+import com.hannes.starwars.data.model.SpeciesEntity
 
-@Database(entities = [Film::class, Planet::class, Character::class, Species::class], version = 1, exportSchema = false)
+@Database(entities = [FilmEntity::class, PlanetEntity::class, CharacterEntity::class, SpeciesEntity::class], version = 1, exportSchema = false)
 abstract class StarWarsDataBase : RoomDatabase() {
     abstract fun filmDao(): FilmDao
     abstract fun planetDao(): PlanetDao

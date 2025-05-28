@@ -1,5 +1,6 @@
 package com.hannes.starwars.data.model
 
+
 data class Film(
     val title: String,
     val episode_id: Int,

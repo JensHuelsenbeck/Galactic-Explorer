@@ -2,11 +2,13 @@ package com.hannes.starwars.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.UUID
 
 @Entity(tableName = "characters")
 data class CharacterEntity(
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
+    val characterId: String = UUID.randomUUID().toString(),
     val name: String,
     val height: String,
     val mass: String,
@@ -16,8 +18,8 @@ data class CharacterEntity(
     val birth_year: String,
     val gender: String,
     val homeworld: String,
-    val films: List<Film>?,
-    val species: List<Species>?,
+    val films: List<String>?,
+    val species: List<String>?,
     val created: String,
     val edited: String,
     val url: String,

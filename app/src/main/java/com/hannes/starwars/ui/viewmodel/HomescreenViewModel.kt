@@ -1,8 +1,11 @@
 package com.hannes.starwars.ui.viewmodel
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hannes.starwars.data.local.StarWarsDataBase
 import com.hannes.starwars.data.model.Character
 import com.hannes.starwars.data.model.Film
 import com.hannes.starwars.data.model.Planet
@@ -19,8 +22,14 @@ class HomescreenViewModel(
     private val filmRepository: FilmRepositoryInterface,
     private val planetRepository: PlanetRepositoryInterface,
     private val characterRepository: CharacterRepositoryInterface,
-    private val speciesRepository: SpeciesRepositoryInterface
-): ViewModel() {
+    private val speciesRepository: SpeciesRepositoryInterface,
+    application: Application
+): AndroidViewModel(application) {
+
+    private val filmDao = StarWarsDataBase.getDatabase(application.applicationContext).filmDao()
+    private val planetDao = StarWarsDataBase.getDatabase(application.applicationContext).planetDao()
+    private val characterDao = StarWarsDataBase.getDatabase(application.applicationContext).characterDao()
+    private val speciesDao = StarWarsDataBase.getDatabase(application.applicationContext).speciesDao()
 
   private val _movies = MutableStateFlow<List<Film>>(emptyList())
     val movies = _movies.asStateFlow()
@@ -71,4 +80,6 @@ fun getAllData() {
         return episodeNum
     }
 
+
 }
+

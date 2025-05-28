@@ -2,11 +2,13 @@ package com.hannes.starwars.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.UUID
 
 @Entity(tableName = "planets")
 data class PlanetEntity(
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
+    val planetId: String = UUID.randomUUID().toString(),
     val name: String,
     val rotation_period: String,
     val orbital_period: String,
@@ -16,8 +18,8 @@ data class PlanetEntity(
     val terrain: String,
     val surface_water: String,
     val population: String,
-    val residents: List<Character>?,
-    val films: List<Film>?,
+    val residents: List<String>?,
+    val films: List<String>?,
     val created: String,
     val edited: String,
     val url: String,
