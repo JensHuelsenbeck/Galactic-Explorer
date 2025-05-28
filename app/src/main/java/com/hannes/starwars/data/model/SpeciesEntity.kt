@@ -19,10 +19,10 @@ data class SpeciesEntity(
     val average_lifespan: String,
     val homeworld: String?,
     val language: String,
-    val people: List<String>?,
-    val films: List<String>?,
+    /*
     val created: String,
     val edited: String,
+     */
     val url: String,
 
     val speciesImage: String?

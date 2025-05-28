@@ -3,7 +3,7 @@ package com.hannes.starwars.data.model
 import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
-import com.hannes.starwars.data.model.crossref.FilmPlanetCrossRef
+import com.hannes.starwars.data.model.crossref.FilmCrossRef.FilmPlanetCrossRef
 
 data class FilmWithPlanets(
     @Embedded
@@ -15,16 +15,3 @@ data class FilmWithPlanets(
     )
     val planets: List<Planet>
 )
-
-/*
-data class PlaylistWithSongs(
-   @Embedded val playlist: Playlist,
-   @Relation(
-       parentColumn = "playlistId",
-       entityColumn = "songId",
-       associateBy = Junction(SongPlaylistCrossRef::class)
-   )
-   val songs: List<Song>
-)
-
- */

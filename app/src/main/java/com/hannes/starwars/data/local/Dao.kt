@@ -6,71 +6,76 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.hannes.starwars.data.model.Film
-import com.hannes.starwars.data.model.Planet
-import com.hannes.starwars.data.model.Species
+import com.hannes.starwars.data.model.CharacterEntity
+import com.hannes.starwars.data.model.FilmEntity
+import com.hannes.starwars.data.model.PlanetEntity
+import com.hannes.starwars.data.model.SpeciesEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FilmDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun insert(film: Film)
+    suspend fun insert(film: FilmEntity)
 
     @Query("SELECT * from films ORDER BY episode_id ASC")
-    fun getAllIFilms(): Flow<List<Film>>
+    fun getAllIFilms(): Flow<List<FilmEntity>>
 
     @Delete
-    suspend fun delete(film: Film)
+    suspend fun delete(film: FilmEntity)
 
     @Update
-    suspend fun update(film: Film)
+    suspend fun update(film: FilmEntity)
+
+
 }
 
 @Dao
 interface PlanetDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun insert(planet: Planet)
+    suspend fun insert(planet: PlanetEntity)
 
     @Query("SELECT * from planets ORDER BY name ASC")
-    fun getAllIFilms(): Flow<List<Planet>>
+    fun getAllIPlanets(): Flow<List<PlanetEntity>>
 
     @Delete
-    suspend fun delete(planet: Planet)
+    suspend fun delete(planet: PlanetEntity)
 
     @Update
-    suspend fun update(planet: Planet)
+    suspend fun update(planet: PlanetEntity)
 }
 
 @Dao
 interface CharacterDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun insert(character: Character)
+    suspend fun insert(character: CharacterEntity)
 
     @Query("SELECT * from characters ORDER BY name ASC")
-    fun getAllIFilms(): Flow<List<Planet>>
+    fun getAllICharacters(): Flow<List<CharacterEntity>>
 
     @Delete
-    suspend fun delete(character: Character)
+    suspend fun delete(character: CharacterEntity)
 
     @Update
-    suspend fun update(character: Character)
+    suspend fun update(character: CharacterEntity)
 }
 
 @Dao
 interface SpeciesDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun insert(species: Species)
+    suspend fun insert(species: SpeciesEntity)
 
     @Query("SELECT * from species ORDER BY name ASC")
-    fun getAllIFilms(): Flow<List<Planet>>
+    fun getAllISpecies(): Flow<List<SpeciesEntity>>
 
     @Delete
-    suspend fun delete(species: Species)
+    suspend fun delete(species: SpeciesEntity)
 
     @Update
-    suspend fun update(species: Species)
+    suspend fun update(species: SpeciesEntity)
 }
+
+

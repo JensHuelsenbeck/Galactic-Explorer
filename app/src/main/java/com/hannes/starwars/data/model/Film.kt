@@ -13,8 +13,11 @@ data class Film(
     val starships: List<String>,
     val vehicles: List<String>,
     val species: List<String>,
+    /*
     val created: String,
     val edited: String,
+
+     */
     val url: String,
 
     val filmImage: String?

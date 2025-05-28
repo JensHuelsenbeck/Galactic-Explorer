@@ -18,11 +18,11 @@ data class PlanetEntity(
     val terrain: String,
     val surface_water: String,
     val population: String,
-    val residents: List<String>?,
-    val films: List<String>?,
+    /*
     val created: String,
     val edited: String,
-    val url: String,
 
+     */
+    val url: String,
     val planetImage: String?
 )

@@ -1,4 +1,4 @@
-package com.hannes.starwars.data.model.crossref
+package com.hannes.starwars.data.model.crossref.FilmCrossRef
 
 import androidx.room.Entity
 

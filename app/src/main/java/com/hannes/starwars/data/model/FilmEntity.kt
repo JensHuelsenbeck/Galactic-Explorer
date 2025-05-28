@@ -15,9 +15,7 @@ data class FilmEntity(
     val director: String,
     val producer: String,
     val release_date: String,
-    val characters: List<String>?,
-    val planets: List<String>?,
-    val species: List<String>?,
+
     val created: String,
     val edited: String,
     val url: String,

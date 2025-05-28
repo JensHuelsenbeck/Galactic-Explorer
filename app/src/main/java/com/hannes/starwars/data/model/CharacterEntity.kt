@@ -18,10 +18,7 @@ data class CharacterEntity(
     val birth_year: String,
     val gender: String,
     val homeworld: String,
-    val films: List<String>?,
-    val species: List<String>?,
-    val created: String,
-    val edited: String,
+
     val url: String,
 
     val characterImage: String?

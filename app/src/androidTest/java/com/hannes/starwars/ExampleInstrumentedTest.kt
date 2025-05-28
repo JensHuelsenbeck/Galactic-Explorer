@@ -22,3 +22,5 @@ class ExampleInstrumentedTest {
         assertEquals("com.hannes.starwars", appContext.packageName)
     }
 }
+
+
