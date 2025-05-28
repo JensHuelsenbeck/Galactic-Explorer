@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hannes.starwars.R
 import com.hannes.starwars.data.fakes.dummyCharacters
+import com.hannes.starwars.data.fakes.dummyEntityMovie
 import com.hannes.starwars.data.fakes.dummyMovie
 import com.hannes.starwars.data.fakes.dummySpecies
 import com.hannes.starwars.ui.components.CategoryTitle
@@ -191,7 +192,7 @@ fun PlanetDetailScreen(modifier: Modifier = Modifier) {
         LazyColumn(modifier.padding(8.dp)) {
             item {
                 Spacer(modifier.padding(vertical = 8.dp))
-                MovieRow(movieList = dummyMovie)
+                MovieRow(movieList = dummyEntityMovie)
                 CategoryTitle(
                     text = "residents"
                 )

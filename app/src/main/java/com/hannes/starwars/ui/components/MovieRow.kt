@@ -8,10 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.hannes.starwars.data.model.Film
+import com.hannes.starwars.data.model.FilmEntity
 
 @Composable
 fun MovieRow(
-    movieList: List<Film>,
+    movieList: List<FilmEntity>,
     modifier: Modifier = Modifier
 ) {
     Column {

@@ -22,6 +22,7 @@ import com.hannes.starwars.R
 import com.hannes.starwars.data.fakes.dummyMovie
 import com.hannes.starwars.data.fakes.dummyPlanets
 import com.hannes.starwars.data.model.Film
+import com.hannes.starwars.data.model.FilmEntity
 import com.hannes.starwars.ui.components.CategoryTitle
 import com.hannes.starwars.ui.components.CharacterList
 import com.hannes.starwars.ui.components.PlanetList
@@ -35,7 +36,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun MovieDetailScreen(
     modifier: Modifier = Modifier,
-    movie: Film,
+    movie: FilmEntity,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
     Column(
@@ -179,10 +180,4 @@ fun MovieDetailScreen(
             }
         }
     }
-}
-
-@Preview
-@Composable
-private fun MovieDetailPrev() {
-    MovieDetailScreen(movie = dummyMovie[0])
 }

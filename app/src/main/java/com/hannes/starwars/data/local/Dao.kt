@@ -15,11 +15,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface FilmDao {
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(film: FilmEntity)
 
     @Query("SELECT * from films ORDER BY episode_id ASC")
-    fun getAllIFilms(): Flow<List<FilmEntity>>
+    fun getAllFilms(): Flow<List<FilmEntity>>
 
     @Delete
     suspend fun delete(film: FilmEntity)
@@ -33,7 +33,7 @@ interface FilmDao {
 @Dao
 interface PlanetDao {
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(planet: PlanetEntity)
 
     @Query("SELECT * from planets ORDER BY name ASC")

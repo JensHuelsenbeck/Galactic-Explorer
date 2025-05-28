@@ -1,5 +1,6 @@
 package com.hannes.starwars.ui.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,11 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.hannes.starwars.data.model.Film
+import com.hannes.starwars.R
+import com.hannes.starwars.data.model.FilmEntity
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 import com.hannes.starwars.ui.viewmodel.HomescreenViewModel
@@ -32,11 +35,10 @@ fun extractYearFromDate(dateString: String): String {
     return dateString.take(4)
 }
 
-val image = "https://images3.alphacoders.com/111/1115520.jpg"
 
 @Composable
 fun MovieCard(
-    movie: Film,
+    movie: FilmEntity,
     modifier: Modifier = Modifier,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
@@ -56,12 +58,14 @@ fun MovieCard(
             modifier = Modifier.padding(8.dp)
         ) {
 
-            AsyncImage(
-                model = image,
+            Image(
+                painter = painterResource(movie.filmImage ?: R.drawable.starwars_logo),
                 contentDescription = "Film Poster",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp)),
+                    .clip(RoundedCornerShape(12.dp))
+                    .height(150.dp),
+
                 contentScale = ContentScale.Fit
             )
 

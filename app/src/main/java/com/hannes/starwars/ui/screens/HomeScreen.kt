@@ -23,7 +23,8 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
 
-val movies = viewModel.movies.collectAsState()
+    val movies = viewModel.movies.collectAsState()
+    val films = viewModel.filmEntities.collectAsState()
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -31,7 +32,7 @@ val movies = viewModel.movies.collectAsState()
     ) {
         Header()
         Spacer(Modifier.height(8.dp))
-        MovieRow(movies.value)
+        MovieRow(films.value)
         Spacer(Modifier.height(8.dp))
         CharacterList()
         Spacer(Modifier.height(8.dp))

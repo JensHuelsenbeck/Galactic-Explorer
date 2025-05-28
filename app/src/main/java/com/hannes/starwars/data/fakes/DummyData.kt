@@ -1,9 +1,25 @@
 package com.hannes.starwars.data.fakes
 
+import com.hannes.starwars.R
 import com.hannes.starwars.data.model.Character
 import com.hannes.starwars.data.model.Film
+import com.hannes.starwars.data.model.FilmEntity
 import com.hannes.starwars.data.model.Planet
 import com.hannes.starwars.data.model.Species
+
+val dummyEntityMovie: List<FilmEntity> = listOf(
+    // --- Episode IV ---------------------------------------------------------
+    FilmEntity(
+        title = "A New Hope",
+        episode_id = 4,
+        opening_crawl = "It is a period of civil war…",          // gekürzt
+        director = "George Lucas",
+        producer = "Gary Kurtz, Rick McCallum",
+        release_date = "1977-05-25",
+        url     = "https://swapi.py4e.com/api/films/1/",
+        filmImage = R.drawable.episode4
+    )
+)
 
 val dummyMovie: List<Film> = listOf(
     // --- Episode IV ---------------------------------------------------------
@@ -44,8 +60,7 @@ val dummyMovie: List<Film> = listOf(
             "https://swapi.py4e.com/api/species/4/",
             "https://swapi.py4e.com/api/species/5/"
         ),
-        created = "2014-12-10T14:23:31.880000Z",
-        edited  = "2014-12-20T19:49:45.256000Z",
+
         url     = "https://swapi.py4e.com/api/films/1/",
         filmImage = "https://lumiere-a.akamaihd.net/v1/images/poster-star-wars-episode-4_a29b329a.jpeg"
     ),
@@ -86,8 +101,7 @@ val dummyMovie: List<Film> = listOf(
             "https://swapi.py4e.com/api/species/6/",
             "https://swapi.py4e.com/api/species/7/"
         ),
-        created = "2014-12-12T11:26:24.656000Z",
-        edited  = "2014-12-15T13:07:53.386000Z",
+
         url     = "https://swapi.py4e.com/api/films/2/",
         filmImage = "https://lumiere-a.akamaihd.net/v1/images/image_24b0a6f0.jpeg"
     ),
@@ -128,8 +142,7 @@ val dummyMovie: List<Film> = listOf(
             "https://swapi.py4e.com/api/species/6/",
             "https://swapi.py4e.com/api/species/7/"
         ),
-        created = "2014-12-12T11:26:24.656000Z",
-        edited  = "2014-12-15T13:07:53.386000Z",
+
         url     = "https://swapi.py4e.com/api/films/2/",
         filmImage = "https://lumiere-a.akamaihd.net/v1/images/image_24b0a6f0.jpeg"
     ),
@@ -170,8 +183,7 @@ val dummyMovie: List<Film> = listOf(
             "https://swapi.py4e.com/api/species/6/",
             "https://swapi.py4e.com/api/species/7/"
         ),
-        created = "2014-12-12T11:26:24.656000Z",
-        edited  = "2014-12-15T13:07:53.386000Z",
+
         url     = "https://swapi.py4e.com/api/films/2/",
         filmImage = "https://lumiere-a.akamaihd.net/v1/images/image_24b0a6f0.jpeg"
     ),
@@ -211,8 +223,7 @@ val dummyMovie: List<Film> = listOf(
             "https://swapi.py4e.com/api/species/6/",
             "https://swapi.py4e.com/api/species/7/"
         ),
-        created = "2014-12-12T11:26:24.656000Z",
-        edited  = "2014-12-15T13:07:53.386000Z",
+
         url     = "https://swapi.py4e.com/api/films/2/",
         filmImage = "https://lumiere-a.akamaihd.net/v1/images/image_24b0a6f0.jpeg"
     ),
@@ -253,8 +264,8 @@ val dummyMovie: List<Film> = listOf(
             "https://swapi.py4e.com/api/species/6/",
             "https://swapi.py4e.com/api/species/7/"
         ),
-        created = "2014-12-12T11:26:24.656000Z",
-        edited  = "2014-12-15T13:07:53.386000Z",
+
+
         url     = "https://swapi.py4e.com/api/films/2/",
         filmImage = "https://lumiere-a.akamaihd.net/v1/images/image_24b0a6f0.jpeg"
     )
@@ -393,8 +404,7 @@ val dummyCharacters: List<Character> = listOf(
             "https://swapi.dev/api/starships/12/", // X-wing
             "https://swapi.dev/api/starships/22/"  // Imperial shuttle
         ),
-        created = "2014-12-09T13:50:51.644000Z",
-        edited = "2014-12-20T21:17:56.891000Z",
+
         url = "https://swapi.dev/api/people/1/"
     ),
     Character(
@@ -416,8 +426,7 @@ val dummyCharacters: List<Character> = listOf(
         species = listOf(),
         vehicles = listOf(),
         starships = listOf(),
-        created = "2014-12-10T15:20:09.791000Z",
-        edited = "2014-12-20T21:17:50.315000Z",
+
         url = "https://swapi.dev/api/people/5/"
     ),
     Character(
@@ -438,8 +447,7 @@ val dummyCharacters: List<Character> = listOf(
         species = listOf(),
         vehicles = listOf(),
         starships = listOf("https://swapi.dev/api/starships/10/"), // Millennium Falcon
-        created = "2014-12-10T16:49:14.582000Z",
-        edited = "2014-12-20T21:17:50.334000Z",
+
         url = "https://swapi.dev/api/people/14/"
     ),
     Character(
@@ -463,8 +471,7 @@ val dummyCharacters: List<Character> = listOf(
         species = listOf(),
         vehicles = listOf(),
         starships = listOf("https://swapi.dev/api/starships/48/"),
-        created = "2014-12-10T16:16:29.192000Z",
-        edited = "2014-12-20T21:17:50.325000Z",
+
         url = "https://swapi.dev/api/people/10/"
     ),
     Character(
@@ -486,8 +493,6 @@ val dummyCharacters: List<Character> = listOf(
         species = listOf("https://swapi.dev/api/species/3/"), // Wookiee
         vehicles = listOf("https://swapi.dev/api/vehicles/19/"), // AT-ST
         starships = listOf("https://swapi.dev/api/starships/10/"), // Millennium Falcon
-        created = "2014-12-10T16:42:45.066000Z",
-        edited = "2014-12-20T21:17:50.332000Z",
         url = "https://swapi.dev/api/people/13/"
     )
 )

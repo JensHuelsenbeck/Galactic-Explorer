@@ -8,19 +8,16 @@ import java.util.UUID
 data class FilmEntity(
 
     @PrimaryKey
-    val filmId: String = UUID.randomUUID().toString(),
-    val title: String,
     val episode_id: Int,
+    val title: String,
     val opening_crawl: String,
     val director: String,
     val producer: String,
     val release_date: String,
 
-    val created: String,
-    val edited: String,
     val url: String,
 
-    val filmImage: String?
+    val filmImage: Int?
 
 
 )
