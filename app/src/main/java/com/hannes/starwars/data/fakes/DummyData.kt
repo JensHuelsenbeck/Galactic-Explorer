@@ -1,4 +1,4 @@
-package com.hannes.starwars.data.datasource
+package com.hannes.starwars.data.fakes
 
 import com.hannes.starwars.data.model.Character
 import com.hannes.starwars.data.model.Film

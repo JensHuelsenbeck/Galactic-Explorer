@@ -6,7 +6,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.hannes.starwars.data.datasource.dummySpecies
+import com.hannes.starwars.data.fakes.dummySpecies
 
 @Composable
 fun SpeciesList(modifier: Modifier = Modifier) {

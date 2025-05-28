@@ -6,7 +6,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.hannes.starwars.data.datasource.dummyCharacters
+import com.hannes.starwars.data.fakes.dummyCharacters
 
 @Composable
 fun CharacterList(modifier: Modifier = Modifier) {

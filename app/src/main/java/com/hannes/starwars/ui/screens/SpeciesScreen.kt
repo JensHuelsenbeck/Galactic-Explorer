@@ -9,75 +9,69 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hannes.starwars.R
-import com.hannes.starwars.data.datasource.dummyCharacters
-import com.hannes.starwars.data.datasource.dummyMovie
+import com.hannes.starwars.data.fakes.dummyCharacters
+import com.hannes.starwars.data.fakes.dummyMovie
+import com.hannes.starwars.data.fakes.dummyPlanets
 import com.hannes.starwars.ui.components.CategoryTitle
 import com.hannes.starwars.ui.components.ListItem
-import com.hannes.starwars.ui.components.MovieList
 import com.hannes.starwars.ui.components.MovieRow
+import com.hannes.starwars.ui.components.PlanetList
 import com.hannes.starwars.ui.theme.basic
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 
 @Composable
-fun DetailScreen(modifier: Modifier = Modifier) {
+fun SpeciesScreen(modifier: Modifier = Modifier) {
     Column(
         modifier = Modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(R.drawable.tatooine),
+            painter = painterResource(R.drawable.ic_launcher_foreground),
             contentDescription = null
         )
         Spacer(modifier.padding(vertical = 8.dp))
         Text(
-            text = "tatooine",
+            text = "human",
             fontFamily = basic,
             style = MaterialTheme.typography.headlineSmall,
             color = starWarsOrange,
         )
         Text(
-            text = "tatooine",
+            text = "human",
             fontFamily = starwarsfont,
             color = starWarsOrange,
             fontSize = 17.sp
         )
         Spacer(modifier.padding(vertical = 8.dp))
 
-        Card() {
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "planet details",
-                    fontFamily = basic,
-                    color = starWarsOrange,
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp)
-                        .padding(top = 8.dp)
-                )
+        Card(
+            colors = CardDefaults.cardColors(
+                containerColor = Color(0xFF1C1C1E)
+            )
+        ) {
 
-                Text(
-                    text = " planet details",
-                    fontFamily = starwarsfont,
-                    color = starWarsOrange.copy(alpha = 0.5f),
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp)
-                        .padding(top = 8.dp)
-                )
-            }
+            Text(
+                text = "species details",
+                fontFamily = starwarsfont,
+                color = starWarsOrange,
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier
+                    .padding(horizontal = 8.dp)
+                    .padding(top = 8.dp)
+            )
+
 
             Row(
                 modifier = Modifier
@@ -88,59 +82,50 @@ fun DetailScreen(modifier: Modifier = Modifier) {
 
                     Row {
                         Text(
-                            text = "rotation period: ",
+                            text = "classification: ",
                             color = starWarsOrange,
-                            fontFamily = starwarsfont,
 
                             )
                         Text(
-                            text = "23",
-                            fontWeight = FontWeight.Bold
+                            text = "humanoid",
 
+                            )
+                    }
+
+                    Row {
+                        Text(
+                            text = "designation: ",
+                            color = starWarsOrange,
+
+
+                            )
+                        Text(
+                            text = "sentient",
+
+                            )
+                    }
+
+                    Row {
+                        Text(
+                            text = "average height: ",
+                            color = starWarsOrange,
+
+
+                            )
+                        Text(
+                            text = "165",
                         )
                     }
 
                     Row {
                         Text(
-                            text = "orbital period: ",
+                            text = "skin colors: ",
                             color = starWarsOrange,
-                            fontFamily = starwarsfont,
 
 
                             )
                         Text(
-                            text = "304",
-                            fontWeight = FontWeight.Bold
-
-                        )
-                    }
-
-                    Row {
-                        Text(
-                            text = "diameter: ",
-                            color = starWarsOrange,
-                            fontFamily = starwarsfont,
-
-
-                            )
-                        Text(
-                            text = "10465",
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-
-                    Row {
-                        Text(
-                            text = "climate: ",
-                            color = starWarsOrange,
-                            fontFamily = starwarsfont,
-
-
-                            )
-                        Text(
-                            text = "arid",
-                            fontWeight = FontWeight.Bold
-
+                            text = "many",
                         )
                     }
 
@@ -152,78 +137,75 @@ fun DetailScreen(modifier: Modifier = Modifier) {
 
                     Row {
                         Text(
-                            text = "gravity: ",
+                            text = "language: ",
                             color = starWarsOrange,
-                            fontFamily = starwarsfont,
 
                             )
                         Text(
-                            text = "1 standard",
-                            fontWeight = FontWeight.Bold
-
-                        )
+                            text = "galactic basic",
+                            )
                     }
 
                     Row {
                         Text(
-                            text = "terrain: ",
+                            text = "eye colors: ",
                             color = starWarsOrange,
-                            fontFamily = starwarsfont,
 
                             )
                         Text(
-                            text = "dessert",
-                            fontWeight = FontWeight.Bold
+                            text = "many",
 
-                        )
+                            )
                     }
 
                     Row {
                         Text(
-                            text = "surface water: ",
+                            text = "average lifespan: ",
                             color = starWarsOrange,
-                            fontFamily = starwarsfont,
 
                             )
                         Text(
-                            text = "1%",
-                            fontWeight = FontWeight.Bold
+                            text = "84",
 
 
-                        )
+                            )
                     }
 
                     Row {
                         Text(
-                            text = "population: ",
+                            text = "homeworld: ",
                             color = starWarsOrange,
-                            fontFamily = starwarsfont,
 
                             )
                         Text(
-                            text = "200000",
-                            fontWeight = FontWeight.Bold
+                            text = "earth",
 
-                        )
+                            )
                     }
 
                 }
+                Spacer(Modifier.weight(1f))
+
             }
         }
-        Spacer(modifier.padding(vertical = 8.dp))
-        MovieList(movieList = dummyMovie)
+        LazyColumn(modifier.padding(8.dp)) {
+            item {
+                Spacer(modifier.padding(vertical = 8.dp))
+                MovieRow(movieList = dummyMovie)
+                CategoryTitle(
+                    text = "characters"
+                )
 
-        CategoryTitle(
-            text = "residents"
-        )
-
-        LazyColumn(modifier = Modifier.height(160.dp)) {
-            items(dummyCharacters) { char ->
-                ListItem(title = char.name, subTitle = char.birth_year)
+                LazyColumn(modifier = Modifier.height(160.dp)) {
+                    items(dummyCharacters) { char ->
+                        ListItem(title = char.name, subTitle = char.birth_year)
+                    }
+                }
+                CategoryTitle(
+                    text = "planets"
+                )
+                PlanetList(planetList = dummyPlanets)
             }
         }
-
-
     }
-
 }
