@@ -110,7 +110,10 @@ class HomescreenViewModel(
                 Log.d("Characters", "Characters: ${characterResponse.first()}")
                 val speciesResponse = speciesRepository.getSpecies()
                 _species.value = speciesResponse
-                Log.d("Species", "Species: ${speciesResponse.first()}")
+                speciesResponse.forEach { species ->
+                    speciesDao.insert(speciesRepository.createSpeciesEntity(species))
+                    Log.d("Species", "Species: ${speciesResponse.first()}")
+                }
             } catch (e: Exception) {
                 Log.e("ERROR", "Error while fetching from API:  ${e.localizedMessage}")
             }
