@@ -107,7 +107,6 @@ class HomescreenViewModel(
                 characterResponse.forEach { character ->
                     characterDao.insert(characterRepository.createCharacterEntity(character))
                 }
-
                 Log.d("Characters", "Characters: ${characterResponse.first()}")
                 val speciesResponse = speciesRepository.getSpecies()
                 _species.value = speciesResponse
