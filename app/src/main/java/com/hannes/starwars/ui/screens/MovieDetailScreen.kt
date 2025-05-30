@@ -11,6 +11,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.hannes.starwars.R
 import com.hannes.starwars.data.fakes.dummyPlanets
 import com.hannes.starwars.data.local.model.FilmEntity
+import com.hannes.starwars.data.local.model.PlanetEntity
 import com.hannes.starwars.ui.components.CategoryTitle
 import com.hannes.starwars.ui.components.CharacterList
 import com.hannes.starwars.ui.components.PlanetList
@@ -36,6 +38,9 @@ fun MovieDetailScreen(
     movie: FilmEntity,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
+    val planets = viewModel.planetEntities.collectAsState()
+    val characters = viewModel.characterEntities.collectAsState()
+
     Column(
         modifier = Modifier,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -163,13 +168,13 @@ fun MovieDetailScreen(
         ) {
             item {
                 Spacer(modifier.padding(vertical = 8.dp))
-                PlanetList(planetList = dummyPlanets)
+                PlanetList(planetList = planets.value )
 
                 CategoryTitle(
                     text = "residents"
                 )
 
-                CharacterList()
+                CharacterList(characterList = characters.value)
                 CategoryTitle(
                     text = "Species"
                 )

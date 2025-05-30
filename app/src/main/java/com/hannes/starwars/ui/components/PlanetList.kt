@@ -7,18 +7,19 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.hannes.starwars.data.local.model.PlanetEntity
 import com.hannes.starwars.data.model.Planet
 
 @Composable
 fun PlanetList(
     modifier: Modifier = Modifier,
-    planetList: List<Planet>
+    planetList: List<PlanetEntity>
 ) {
 
     CategoryTitle("Planets", modifier.padding(horizontal = 8.dp))
     LazyColumn(modifier.height(160.dp)) {
         items(planetList) { planet ->
-            ListItem(title = planet.name, subTitle = null)
+            ListItem(title = planet.planetName, subTitle = null)
         }
 
     }

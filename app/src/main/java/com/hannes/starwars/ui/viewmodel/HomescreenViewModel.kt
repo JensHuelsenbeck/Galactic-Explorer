@@ -5,9 +5,11 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.hannes.starwars.data.local.StarWarsDataBase
+import com.hannes.starwars.data.local.model.CharacterEntity
 import com.hannes.starwars.data.model.Character
 import com.hannes.starwars.data.model.Film
 import com.hannes.starwars.data.local.model.FilmEntity
+import com.hannes.starwars.data.local.model.PlanetEntity
 import com.hannes.starwars.data.model.Planet
 import com.hannes.starwars.data.model.Species
 import com.hannes.starwars.data.repository.CharacterRepo.CharacterRepositoryInterface
@@ -46,6 +48,19 @@ class HomescreenViewModel(
             started = SharingStarted.WhileSubscribed(),
             initialValue = emptyList()
         )
+    val characterEntities: StateFlow<List<CharacterEntity>> = characterDao.getAllICharacters()
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(),
+            initialValue = emptyList()
+        )
+    val planetEntities: StateFlow<List<PlanetEntity>> = planetDao.getAllPlanets()
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(),
+            initialValue = emptyList()
+        )
+
 
 
     private val _movies = MutableStateFlow<List<Film>>(emptyList())
@@ -78,9 +93,16 @@ class HomescreenViewModel(
                 Log.d("Movies", "Movies: ${filmResponse.first()}}")
                 val planetResponse = planetRepository.getPlanets()
                 _planets.value = planetResponse
+                planetResponse.forEach { planet ->
+                    planetDao.insert(planetRepository.createPlanetEntity(planet))
+                }
                 Log.d("Planets", "Planets: ${planetResponse.first()}")
                 val characterResponse = characterRepository.getCharacters()
                 _characters.value = characterResponse
+                characterResponse.forEach { character ->
+                    characterDao.insert(characterRepository.createCharacterEntity(character))
+                }
+
                 Log.d("Characters", "Characters: ${characterResponse.first()}")
                 val speciesResponse = speciesRepository.getSpecies()
                 _species.value = speciesResponse
@@ -91,34 +113,21 @@ class HomescreenViewModel(
         }
     }
 
-    fun  insertDataToDatabase(movies: List<Film>) {
-        Log.d("Database", "Running function")
-        viewModelScope.launch {
-            delay(1500)
-            try {
-                movies.forEach { movie ->
-                    filmDao.insert(filmRepository.movieIntoDb(movie))
-                }
-            } catch (e: Exception) {
-                Log.e("ERROR", "Error while inserting Planets into database:  ${e.localizedMessage}")
-            }
-        }
-    }
 
-        fun episodeNumb(movie: FilmEntity): String {
-            var episodeNum =
-                when (movie.episode_id) {
-                    1 -> "i"
-                    2 -> "ii"
-                    3 -> "iii"
-                    4 -> "iv"
-                    5 -> "v"
-                    6 -> "vi"
-                    7 -> "vii"
-                    else -> ""
-                }
-            return episodeNum
-        }
+    fun episodeNumb(movie: FilmEntity): String {
+        var episodeNum =
+            when (movie.episode_id) {
+                1 -> "i"
+                2 -> "ii"
+                3 -> "iii"
+                4 -> "iv"
+                5 -> "v"
+                6 -> "vi"
+                7 -> "vii"
+                else -> ""
+            }
+        return episodeNum
     }
+}
 
 

@@ -8,8 +8,7 @@ import java.util.UUID
 data class PlanetEntity(
 
     @PrimaryKey
-    val planetId: String = UUID.randomUUID().toString(),
-    val name: String,
+    val planetName: String,
     val rotation_period: String,
     val orbital_period: String,
     val diameter: String,
@@ -18,11 +17,6 @@ data class PlanetEntity(
     val terrain: String,
     val surface_water: String,
     val population: String,
-    /*
-    val created: String,
-    val edited: String,
-
-     */
     val url: String,
     val planetImage: String?
 )

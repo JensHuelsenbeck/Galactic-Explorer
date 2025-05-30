@@ -13,10 +13,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface SpeciesDao {
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(species: SpeciesEntity)
 
-    @Query("SELECT * from species ORDER BY name ASC")
+    @Query("SELECT * from species ORDER BY speciesName ASC")
     fun getAllISpecies(): Flow<List<SpeciesEntity>>
 
     @Delete

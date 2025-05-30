@@ -13,6 +13,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,9 +31,19 @@ import com.hannes.starwars.ui.components.MovieRow
 import com.hannes.starwars.ui.theme.basic
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
+import com.hannes.starwars.ui.viewmodel.HomescreenViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun PlanetDetailScreen(modifier: Modifier = Modifier) {
+fun PlanetDetailScreen(
+    modifier: Modifier = Modifier,
+    viewModel: HomescreenViewModel = koinViewModel()
+) {
+
+    val films = viewModel.filmEntities.collectAsState()
+    val planets = viewModel.planetEntities.collectAsState()
+    val characters = viewModel.characterEntities.collectAsState()
+
     Column(
         modifier = Modifier,
         horizontalAlignment = Alignment.CenterHorizontally

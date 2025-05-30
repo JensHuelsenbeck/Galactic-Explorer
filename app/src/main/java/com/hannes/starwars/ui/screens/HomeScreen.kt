@@ -23,8 +23,10 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
 
-    val movies = viewModel.movies.collectAsState()
+
     val films = viewModel.filmEntities.collectAsState()
+    val planets = viewModel.planetEntities.collectAsState()
+    val characters = viewModel.characterEntities.collectAsState()
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -34,8 +36,8 @@ fun HomeScreen(
         Spacer(Modifier.height(8.dp))
         MovieRow(films.value)
         Spacer(Modifier.height(8.dp))
-        CharacterList()
+        CharacterList(characterList = characters.value)
         Spacer(Modifier.height(8.dp))
-        PlanetList(planetList = dummyPlanets)
+        PlanetList(planetList = planets.value)
     }
 }

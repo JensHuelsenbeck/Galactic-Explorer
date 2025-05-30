@@ -8,8 +8,7 @@ import java.util.UUID
 data class CharacterEntity(
 
     @PrimaryKey
-    val characterId: String = UUID.randomUUID().toString(),
-    val name: String,
+    val characterName: String,
     val height: String,
     val mass: String,
     val hair_color: String,
@@ -18,8 +17,6 @@ data class CharacterEntity(
     val birth_year: String,
     val gender: String,
     val homeworld: String,
-
     val url: String,
-
     val characterImage: String?
 )

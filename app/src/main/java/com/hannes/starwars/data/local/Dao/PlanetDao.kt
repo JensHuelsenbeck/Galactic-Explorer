@@ -12,10 +12,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PlanetDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(planet: PlanetEntity)
 
-    @Query("SELECT * from planets ORDER BY name ASC")
+    @Query("SELECT * from planets ORDER BY planetName ASC")
     fun getAllPlanets(): Flow<List<PlanetEntity>>
 
     @Delete

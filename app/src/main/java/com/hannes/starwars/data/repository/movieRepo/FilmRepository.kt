@@ -40,7 +40,7 @@ class FilmRepository(
                     6 -> R.drawable.episode6
                     7 -> R.drawable.episode7
                     else -> null
-                }
+                },
         )
         Log.d("Database", "Data inserted into database")
         return filmEntity

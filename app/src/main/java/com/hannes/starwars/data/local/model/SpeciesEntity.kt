@@ -8,8 +8,7 @@ import java.util.UUID
 data class SpeciesEntity(
 
     @PrimaryKey
-    val speciesId: String = UUID.randomUUID().toString(),
-    val name: String,
+    val speciesName: String,
     val classification: String,
     val designation: String,
     val average_height: String,
@@ -19,10 +18,7 @@ data class SpeciesEntity(
     val average_lifespan: String,
     val homeworld: String?,
     val language: String,
-    /*
-    val created: String,
-    val edited: String,
-     */
+
     val url: String,
 
     val speciesImage: String?

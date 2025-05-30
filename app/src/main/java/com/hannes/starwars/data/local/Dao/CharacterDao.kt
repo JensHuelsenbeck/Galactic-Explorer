@@ -12,10 +12,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface CharacterDao {
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(character: CharacterEntity)
 
-    @Query("SELECT * from characters ORDER BY name ASC")
+    @Query("SELECT * from characters ORDER BY characterName ASC")
     fun getAllICharacters(): Flow<List<CharacterEntity>>
 
     @Delete
