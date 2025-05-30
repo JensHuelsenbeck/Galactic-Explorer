@@ -20,16 +20,16 @@ class CharacterRepository(
 
     override suspend fun createCharacterEntity(character: Character): CharacterEntity {
         val characterEntity = CharacterEntity(
-            characterName = character.name,
-            height = character.height,
-            mass = character.mass,
-            hair_color = character.hair_color,
-            eye_color = character.eye_color,
-            birth_year = character.birth_year,
-            gender = character.gender,
-            homeworld = character.homeworld,
+            characterName = character.name.lowercase(),
+            height = character.height.lowercase(),
+            mass = character.mass.lowercase(),
+            hair_color = character.hair_color.lowercase(),
+            eye_color = character.eye_color.lowercase(),
+            birth_year = character.birth_year.lowercase(),
+            gender = character.gender.lowercase(),
+            homeworld = character.homeworld.lowercase(),
             url = character.url,
-            skin_color = character.skin_color,
+            skin_color = character.skin_color.lowercase(),
             characterImage = ""
         )
         return characterEntity

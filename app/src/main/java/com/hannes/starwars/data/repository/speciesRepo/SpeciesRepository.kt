@@ -20,16 +20,16 @@ class SpeciesRepository(
 
     override suspend fun createSpeciesEntity(species: Species): SpeciesEntity {
        val speciesEntity = SpeciesEntity(
-           speciesName = species.name,
-           classification = species.classification,
-           designation = species.designation,
-           average_height = species.average_height,
-           skin_colors = species.skin_colors,
-           hair_colors = species.hair_colors,
-           eye_colors = species.eye_colors,
-           average_lifespan = species.average_lifespan,
+           speciesName = species.name.lowercase(),
+           classification = species.classification.lowercase(),
+           designation = species.designation.lowercase(),
+           average_height = species.average_height.lowercase(),
+           skin_colors = species.skin_colors.lowercase(),
+           hair_colors = species.hair_colors.lowercase(),
+           eye_colors = species.eye_colors.lowercase(),
+           average_lifespan = species.average_lifespan.lowercase(),
            homeworld = species.homeworld,
-           language = species.language,
+           language = species.language.lowercase(),
            url = species.url,
            speciesImage = ""
        )

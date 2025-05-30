@@ -23,12 +23,12 @@ class FilmRepository(
     override suspend fun movieIntoDb(movie: Film): FilmEntity {
         Log.d("Database", "Inserting movie: $movie")
         val filmEntity = FilmEntity(
-            title = movie.title,
+            title = movie.title.lowercase(),
             episode_id = movie.episode_id,
-            opening_crawl = movie.opening_crawl,
-            director = movie.director,
-            producer = movie.producer,
-            release_date = movie.release_date,
+            opening_crawl = movie.opening_crawl.lowercase(),
+            director = movie.director.lowercase(),
+            producer = movie.producer.lowercase(),
+            release_date = movie.release_date.lowercase(),
             url = movie.url,
             filmImage =
                 when (movie.episode_id) {

@@ -120,7 +120,6 @@ class HomescreenViewModel(
         }
     }
 
-
     fun episodeNumb(movie: FilmEntity): String {
         var episodeNum =
             when (movie.episode_id) {

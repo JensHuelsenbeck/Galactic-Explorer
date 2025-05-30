@@ -20,15 +20,15 @@ class PlanetRepository(
 
     override suspend fun createPlanetEntity(planet: Planet): PlanetEntity {
         val planetEntity = PlanetEntity(
-            planetName = planet.name,
-            rotation_period = planet.rotation_period,
-            orbital_period = planet.orbital_period,
-            diameter = planet.diameter,
-            climate = planet.climate,
-            gravity = planet.gravity,
-            terrain = planet.terrain,
-            surface_water = planet.surface_water,
-            population = planet.population,
+            planetName = planet.name.lowercase(),
+            rotation_period = planet.rotation_period.lowercase(),
+            orbital_period = planet.orbital_period.lowercase(),
+            diameter = planet.diameter.lowercase(),
+            climate = planet.climate.lowercase(),
+            gravity = planet.gravity.lowercase(),
+            terrain = planet.terrain.lowercase(),
+            surface_water = planet.surface_water.lowercase(),
+            population = planet.population.lowercase(),
             url = planet.url,
             planetImage = ""
         )
