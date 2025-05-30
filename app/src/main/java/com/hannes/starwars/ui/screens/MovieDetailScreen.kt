@@ -19,9 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hannes.starwars.R
-import com.hannes.starwars.data.fakes.dummyPlanets
 import com.hannes.starwars.data.local.model.FilmEntity
-import com.hannes.starwars.data.local.model.PlanetEntity
 import com.hannes.starwars.ui.components.CategoryTitle
 import com.hannes.starwars.ui.components.CharacterList
 import com.hannes.starwars.ui.components.PlanetList
@@ -40,6 +38,7 @@ fun MovieDetailScreen(
 ) {
     val planets = viewModel.planetEntities.collectAsState()
     val characters = viewModel.characterEntities.collectAsState()
+    val species = viewModel.speciesEntities.collectAsState()
 
     Column(
         modifier = Modifier,
@@ -178,7 +177,7 @@ fun MovieDetailScreen(
                 CategoryTitle(
                     text = "Species"
                 )
-                SpeciesList()
+                SpeciesList(speciesList = species.value)
             }
         }
     }

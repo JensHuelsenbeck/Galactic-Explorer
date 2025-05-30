@@ -2,6 +2,7 @@ package com.hannes.starwars.ui.components
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,7 +17,7 @@ fun CharacterList(
     ) {
     CategoryTitle(text = "Characters")
 
-    LazyColumn(modifier = Modifier.height(160.dp)) {
+    LazyRow(modifier = Modifier.height(80.dp)) {
         items(characterList) { char ->
             ListItem(title = char.characterName, subTitle = char.birth_year)
         }

@@ -10,6 +10,7 @@ import com.hannes.starwars.data.model.Character
 import com.hannes.starwars.data.model.Film
 import com.hannes.starwars.data.local.model.FilmEntity
 import com.hannes.starwars.data.local.model.PlanetEntity
+import com.hannes.starwars.data.local.model.SpeciesEntity
 import com.hannes.starwars.data.model.Planet
 import com.hannes.starwars.data.model.Species
 import com.hannes.starwars.data.repository.CharacterRepo.CharacterRepositoryInterface
@@ -60,8 +61,12 @@ class HomescreenViewModel(
             started = SharingStarted.WhileSubscribed(),
             initialValue = emptyList()
         )
-
-
+    val speciesEntities: StateFlow<List<SpeciesEntity>> = speciesDao.getAllISpecies()
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(),
+            initialValue = emptyList()
+        )
 
     private val _movies = MutableStateFlow<List<Film>>(emptyList())
     val movies = _movies.asStateFlow()

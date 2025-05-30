@@ -3,6 +3,7 @@ package com.hannes.starwars.ui.components
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,9 +18,9 @@ fun PlanetList(
 ) {
 
     CategoryTitle("Planets", modifier.padding(horizontal = 8.dp))
-    LazyColumn(modifier.height(160.dp)) {
+    LazyRow(modifier.height(80.dp)) {
         items(planetList) { planet ->
-            ListItem(title = planet.planetName, subTitle = null)
+            ListItem(title = planet.planetName, subTitle = planet.gravity + " G")
         }
 
     }

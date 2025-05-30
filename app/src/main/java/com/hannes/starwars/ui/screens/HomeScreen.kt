@@ -9,11 +9,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.hannes.starwars.data.fakes.dummyPlanets
 import com.hannes.starwars.ui.components.CharacterList
 import com.hannes.starwars.ui.components.Header
 import com.hannes.starwars.ui.components.MovieRow
 import com.hannes.starwars.ui.components.PlanetList
+import com.hannes.starwars.ui.components.SpeciesList
 import com.hannes.starwars.ui.viewmodel.HomescreenViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -27,6 +27,7 @@ fun HomeScreen(
     val films = viewModel.filmEntities.collectAsState()
     val planets = viewModel.planetEntities.collectAsState()
     val characters = viewModel.characterEntities.collectAsState()
+    val species = viewModel.speciesEntities.collectAsState()
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -39,5 +40,7 @@ fun HomeScreen(
         CharacterList(characterList = characters.value)
         Spacer(Modifier.height(8.dp))
         PlanetList(planetList = planets.value)
+        Spacer(Modifier.height(8.dp))
+        SpeciesList( speciesList = species.value)
     }
 }

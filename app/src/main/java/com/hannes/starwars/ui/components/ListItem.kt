@@ -1,9 +1,12 @@
 package com.hannes.starwars.ui.components
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -24,16 +27,17 @@ fun ListItem(
 ) {
     Card(
         Modifier
-            .fillMaxWidth()
+            .width(300.dp)
             .padding(horizontal = 8.dp, vertical = 4.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFF1C1C1E)
         )
     ) {
-        Row(
+        Column(
             modifier
                 .padding(vertical = 6.dp, horizontal = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.Center
         ) {
             Text(
                 text = title,
