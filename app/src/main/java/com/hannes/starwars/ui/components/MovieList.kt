@@ -14,8 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.hannes.starwars.data.model.Film
-import com.hannes.starwars.data.model.FilmEntity
+import com.hannes.starwars.data.local.model.FilmEntity
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 import com.hannes.starwars.ui.viewmodel.HomescreenViewModel

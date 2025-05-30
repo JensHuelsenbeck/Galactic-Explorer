@@ -3,7 +3,7 @@ package com.hannes.starwars.data.fakes
 import com.hannes.starwars.R
 import com.hannes.starwars.data.model.Character
 import com.hannes.starwars.data.model.Film
-import com.hannes.starwars.data.model.FilmEntity
+import com.hannes.starwars.data.local.model.FilmEntity
 import com.hannes.starwars.data.model.Planet
 import com.hannes.starwars.data.model.Species
 

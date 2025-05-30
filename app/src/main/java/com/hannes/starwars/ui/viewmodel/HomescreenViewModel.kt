@@ -4,11 +4,10 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.hannes.starwars.R
 import com.hannes.starwars.data.local.StarWarsDataBase
 import com.hannes.starwars.data.model.Character
 import com.hannes.starwars.data.model.Film
-import com.hannes.starwars.data.model.FilmEntity
+import com.hannes.starwars.data.local.model.FilmEntity
 import com.hannes.starwars.data.model.Planet
 import com.hannes.starwars.data.model.Species
 import com.hannes.starwars.data.repository.CharacterRepo.CharacterRepositoryInterface
@@ -23,6 +22,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
 
 import kotlinx.coroutines.launch
+import kotlin.collections.forEach
 
 class HomescreenViewModel(
     private val filmRepository: FilmRepositoryInterface,
@@ -62,7 +62,7 @@ class HomescreenViewModel(
 
     init {
         getAllDataFromApi()
-        insertDataToDatabase()
+
     }
 
 
@@ -71,6 +71,10 @@ class HomescreenViewModel(
             try {
                 val filmResponse = filmRepository.getMovies()
                 _movies.value = filmResponse
+                filmResponse.forEach { movie ->
+                    filmDao.insert(filmRepository.movieIntoDb(movie))
+                }
+
                 Log.d("Movies", "Movies: ${filmResponse.first()}}")
                 val planetResponse = planetRepository.getPlanets()
                 _planets.value = planetResponse
@@ -82,42 +86,22 @@ class HomescreenViewModel(
                 _species.value = speciesResponse
                 Log.d("Species", "Species: ${speciesResponse.first()}")
             } catch (e: Exception) {
-                Log.e("ERROR", "Error while trying to insert favorite meal ${e.localizedMessage}")
+                Log.e("ERROR", "Error while fetching from API:  ${e.localizedMessage}")
             }
         }
     }
 
-    fun insertDataToDatabase() {
+    fun  insertDataToDatabase(movies: List<Film>) {
+        Log.d("Database", "Running function")
         viewModelScope.launch {
-            delay(3000)
-        movies.value.forEach { movie ->
-            Log.d("Database", "Inserting movie: $movie")
-            val filmEntity = FilmEntity(
-                title = movie.title,
-                episode_id = movie.episode_id,
-                opening_crawl = movie.opening_crawl,
-                director = movie.director,
-                producer = movie.producer,
-                release_date = movie.release_date,
-                url = movie.url,
-                filmImage =
-                    when (movie.episode_id) {
-                        1 -> R.drawable.episode1
-                        2 -> R.drawable.episode2
-                        3 -> R.drawable.episode3
-                        4 -> R.drawable.episode4
-                        5 -> R.drawable.episode5
-                        6 -> R.drawable.episode6
-                        7 -> R.drawable.episode7
-                        else -> null
-                    }
-
-            )
-                filmDao.insert(filmEntity)
-                Log.d("Database", "Data inserted into database")
-
+            delay(1500)
+            try {
+                movies.forEach { movie ->
+                    filmDao.insert(filmRepository.movieIntoDb(movie))
+                }
+            } catch (e: Exception) {
+                Log.e("ERROR", "Error while inserting Planets into database:  ${e.localizedMessage}")
             }
-
         }
     }
 

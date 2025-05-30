@@ -22,9 +22,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import com.hannes.starwars.R
-import com.hannes.starwars.data.model.FilmEntity
+import com.hannes.starwars.data.local.model.FilmEntity
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 import com.hannes.starwars.ui.viewmodel.HomescreenViewModel

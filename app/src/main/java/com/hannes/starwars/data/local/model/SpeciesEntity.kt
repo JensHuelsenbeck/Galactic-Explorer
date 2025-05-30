@@ -1,4 +1,4 @@
-package com.hannes.starwars.data.model
+package com.hannes.starwars.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

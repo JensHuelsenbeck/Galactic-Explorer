@@ -4,10 +4,14 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import android.content.Context
 import androidx.room.Room
-import com.hannes.starwars.data.model.FilmEntity
-import com.hannes.starwars.data.model.PlanetEntity
-import com.hannes.starwars.data.model.CharacterEntity
-import com.hannes.starwars.data.model.SpeciesEntity
+import com.hannes.starwars.data.local.Dao.CharacterDao
+import com.hannes.starwars.data.local.Dao.FilmDao
+import com.hannes.starwars.data.local.Dao.PlanetDao
+import com.hannes.starwars.data.local.Dao.SpeciesDao
+import com.hannes.starwars.data.local.model.FilmEntity
+import com.hannes.starwars.data.local.model.PlanetEntity
+import com.hannes.starwars.data.local.model.CharacterEntity
+import com.hannes.starwars.data.local.model.SpeciesEntity
 
 @Database(entities = [FilmEntity::class, PlanetEntity::class, CharacterEntity::class, SpeciesEntity::class], version = 1, exportSchema = false)
 abstract class StarWarsDataBase : RoomDatabase() {
