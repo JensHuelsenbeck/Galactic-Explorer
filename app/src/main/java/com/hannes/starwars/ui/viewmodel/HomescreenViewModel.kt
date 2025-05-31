@@ -6,26 +6,23 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.hannes.starwars.data.local.StarWarsDataBase
 import com.hannes.starwars.data.local.model.CharacterEntity
-import com.hannes.starwars.data.model.Character
-import com.hannes.starwars.data.model.Film
 import com.hannes.starwars.data.local.model.FilmEntity
 import com.hannes.starwars.data.local.model.PlanetEntity
 import com.hannes.starwars.data.local.model.SpeciesEntity
+import com.hannes.starwars.data.model.Character
+import com.hannes.starwars.data.model.Film
 import com.hannes.starwars.data.model.Planet
 import com.hannes.starwars.data.model.Species
 import com.hannes.starwars.data.repository.CharacterRepo.CharacterRepositoryInterface
 import com.hannes.starwars.data.repository.movieRepo.FilmRepositoryInterface
 import com.hannes.starwars.data.repository.planetRepo.PlanetRepositoryInterface
 import com.hannes.starwars.data.repository.speciesRepo.SpeciesRepositoryInterface
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
-
 import kotlinx.coroutines.launch
-import kotlin.collections.forEach
 
 class HomescreenViewModel(
     private val filmRepository: FilmRepositoryInterface,
@@ -102,18 +99,23 @@ class HomescreenViewModel(
                     planetDao.insert(planetRepository.createPlanetEntity(planet))
                 }
                 Log.d("Planets", "Planets: ${planetResponse.first()}")
+                Log.d("Planets", "Total planets loaded: ${planetResponse.size}")
+
                 val characterResponse = characterRepository.getCharacters()
                 _characters.value = characterResponse
                 characterResponse.forEach { character ->
                     characterDao.insert(characterRepository.createCharacterEntity(character))
                 }
                 Log.d("Characters", "Characters: ${characterResponse.first()}")
+                Log.d("Characters", "Total characters loaded: ${characterResponse.size}")
                 val speciesResponse = speciesRepository.getSpecies()
                 _species.value = speciesResponse
                 speciesResponse.forEach { species ->
                     speciesDao.insert(speciesRepository.createSpeciesEntity(species))
-                    Log.d("Species", "Species: ${speciesResponse.first()}")
                 }
+                Log.d("Species", "Species: ${speciesResponse.first()}")
+                Log.d("Species", "Total species loaded: ${speciesResponse.size}")
+
             } catch (e: Exception) {
                 Log.e("ERROR", "Error while fetching from API:  ${e.localizedMessage}")
             }

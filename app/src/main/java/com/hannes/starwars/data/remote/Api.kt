@@ -12,6 +12,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 private const val BASE_URL = "https://swapi.py4e.com/api/"
 private val moshi = Moshi.Builder()
@@ -40,11 +41,21 @@ interface ApiService {
     @GET("people/")
     suspend fun getAllCharacters(): Response<CharacterResponse>
 
+    @GET("people/")
+    suspend fun getCharacterByPage(@Query("page") page: Int): Response<CharacterResponse>
+
     @GET("planets/")
     suspend fun getAllPlanets(): Response<PlanetResponse>
 
+    @GET("planets/")
+    suspend fun getPlanetsByPage(@Query("page") page: Int): Response<PlanetResponse>
+
     @GET("species/")
     suspend fun getAllSpecies(): Response<SpeciesResponse>
+
+    @GET("species/")
+    suspend fun getSpeciesByPage(@Query("page") page: Int): Response<SpeciesResponse>
+
 }
 
 object StarWarsAPI {
