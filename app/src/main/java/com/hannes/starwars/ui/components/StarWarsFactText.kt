@@ -19,7 +19,7 @@ fun StarWarsFactText(
     val randomFact by viewModel.randomFact.collectAsState()
 
     Text(
-        text = randomFact,
+        text = randomFact.lowercase(),
         fontFamily = starwarsfont,
         modifier = modifier.padding(8.dp),
         textAlign = TextAlign.Center
