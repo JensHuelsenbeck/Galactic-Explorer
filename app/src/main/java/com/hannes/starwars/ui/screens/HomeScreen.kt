@@ -9,6 +9,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.hannes.starwars.navigation.DetailsRoute
 import com.hannes.starwars.ui.components.CharacterList
 import com.hannes.starwars.ui.components.Header
 import com.hannes.starwars.ui.components.MovieRow
@@ -20,6 +22,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun HomeScreen(
     viewModel: HomescreenViewModel = koinViewModel(),
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
 
@@ -39,12 +42,25 @@ fun HomeScreen(
     ) {
         Header()
         Spacer(Modifier.height(8.dp))
-        MovieRow(films.value)
+        MovieRow(
+            movieList = films.value,
+            onMovieClick = { selectedMovie ->
+                navController.navigate(DetailsRoute("movie", selectedMovie.title))
+            }
+        )
         Spacer(Modifier.height(8.dp))
         CharacterList(characterList = charactersForFilm.value)
         Spacer(Modifier.height(8.dp))
-        PlanetList(planetList = planetsForFilm.value)
+        PlanetList(
+            planetList = planetsForFilm.value,
+            onPlanetClick = { selectedPlanet ->
+                navController.navigate(DetailsRoute("planet", selectedPlanet.planetName))
+            }
+        )
         Spacer(Modifier.height(8.dp))
-        SpeciesList( speciesList = speciesForFilm.value)
+        SpeciesList( speciesList = speciesForFilm.value,
+            onSpeciesClick = { selectedSpecies ->
+                navController.navigate(DetailsRoute("species", selectedSpecies.speciesName))
+            })
     }
 }

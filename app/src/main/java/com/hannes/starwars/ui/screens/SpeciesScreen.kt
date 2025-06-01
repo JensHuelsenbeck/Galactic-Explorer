@@ -25,6 +25,7 @@ import com.hannes.starwars.data.fakes.dummyCharacters
 import com.hannes.starwars.data.fakes.dummyEntityMovie
 import com.hannes.starwars.data.fakes.dummyMovie
 import com.hannes.starwars.data.fakes.dummyPlanets
+import com.hannes.starwars.data.local.model.SpeciesEntity
 import com.hannes.starwars.ui.components.CategoryTitle
 import com.hannes.starwars.ui.components.ListItem
 import com.hannes.starwars.ui.components.MovieRow
@@ -37,6 +38,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SpeciesScreen(
+    species: SpeciesEntity,
     modifier: Modifier = Modifier,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
@@ -55,13 +57,13 @@ fun SpeciesScreen(
         )
         Spacer(modifier.padding(vertical = 8.dp))
         Text(
-            text = "human",
+            text = species.speciesName,
             fontFamily = basic,
             style = MaterialTheme.typography.headlineSmall,
             color = starWarsOrange,
         )
         Text(
-            text = "human",
+            text = species.speciesName,
             fontFamily = starwarsfont,
             color = starWarsOrange,
             fontSize = 17.sp
@@ -99,7 +101,7 @@ fun SpeciesScreen(
 
                             )
                         Text(
-                            text = "humanoid",
+                            text = species.classification,
 
                             )
                     }
@@ -112,7 +114,7 @@ fun SpeciesScreen(
 
                             )
                         Text(
-                            text = "sentient",
+                            text = species.designation ?: "-",
 
                             )
                     }
@@ -125,7 +127,7 @@ fun SpeciesScreen(
 
                             )
                         Text(
-                            text = "165",
+                            text = species.average_height ?: "-",
                         )
                     }
 
@@ -137,7 +139,7 @@ fun SpeciesScreen(
 
                             )
                         Text(
-                            text = "many",
+                            text = species.skin_colors ?: "-",
                         )
                     }
 
@@ -154,7 +156,7 @@ fun SpeciesScreen(
 
                             )
                         Text(
-                            text = "galactic basic",
+                            text = species.language ?: "-",
                             )
                     }
 
@@ -165,7 +167,7 @@ fun SpeciesScreen(
 
                             )
                         Text(
-                            text = "many",
+                            text = species.eye_colors ?: "-",
 
                             )
                     }
@@ -177,7 +179,7 @@ fun SpeciesScreen(
 
                             )
                         Text(
-                            text = "84",
+                            text = species.average_lifespan ?: "-",
 
 
                             )
@@ -190,7 +192,7 @@ fun SpeciesScreen(
 
                             )
                         Text(
-                            text = "earth",
+                            text = species.homeworld ?: "-",
 
                             )
                     }
@@ -203,21 +205,28 @@ fun SpeciesScreen(
         LazyColumn(modifier.padding(8.dp)) {
             item {
                 Spacer(modifier.padding(vertical = 8.dp))
-                MovieRow(movieList = dummyEntityMovie)
+                MovieRow(
+                    movieList = films.value,
+                    onMovieClick = { }
+                )
                 CategoryTitle(
                     text = "characters"
                 )
 
+                CategoryTitle(text = "characters")
+
                 LazyColumn(modifier = Modifier.height(160.dp)) {
-                    items(dummyCharacters) { char ->
-                        ListItem(title = char.name, subTitle = char.birth_year)
+                    items(characters.value) { char ->
+                        ListItem(title = char.characterName, subTitle = char.birth_year)
                     }
                 }
                 CategoryTitle(
                     text = "planets"
                 )
-                PlanetList(planetList = planets.value)
-            }
+                PlanetList(
+                    planetList = planets.value,
+                    onPlanetClick = { }
+                )            }
         }
     }
 }

@@ -18,8 +18,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.hannes.starwars.R
 import com.hannes.starwars.data.local.model.FilmEntity
+import com.hannes.starwars.navigation.DetailsRoute
 import com.hannes.starwars.ui.components.CategoryTitle
 import com.hannes.starwars.ui.components.CharacterList
 import com.hannes.starwars.ui.components.PlanetList
@@ -34,6 +36,7 @@ import org.koin.androidx.compose.koinViewModel
 fun MovieDetailScreen(
     modifier: Modifier = Modifier,
     movie: FilmEntity,
+    navController: NavController,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
     val planets = viewModel.planetEntities.collectAsState()
@@ -167,7 +170,11 @@ fun MovieDetailScreen(
         ) {
             item {
                 Spacer(modifier.padding(vertical = 8.dp))
-                PlanetList(planetList = planets.value )
+                PlanetList(planetList = planets.value,
+                    onPlanetClick = { selectedPlanet ->
+                        navController.navigate(DetailsRoute("planet", selectedPlanet.planetName))
+                    }
+                )
 
                 CategoryTitle(
                     text = "residents"
@@ -177,7 +184,12 @@ fun MovieDetailScreen(
                 CategoryTitle(
                     text = "Species"
                 )
-                SpeciesList(speciesList = species.value)
+                SpeciesList(
+                    speciesList = species.value,
+                    onSpeciesClick = { selectedMovie ->
+                        navController.navigate(DetailsRoute("movie", selectedMovie.speciesName))
+                    }
+                )
             }
         }
     }

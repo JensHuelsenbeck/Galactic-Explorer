@@ -12,13 +12,19 @@ import com.hannes.starwars.data.local.model.SpeciesEntity
 
 @Composable
 fun SpeciesList(
-    modifier: Modifier = Modifier, speciesList: List<SpeciesEntity>
+    modifier: Modifier = Modifier,
+    speciesList: List<SpeciesEntity>,
+    onSpeciesClick: (SpeciesEntity) -> Unit
+
 ) {
     CategoryTitle("Species", modifier.padding(horizontal = 8.dp))
 
     LazyRow(modifier = Modifier.height(160.dp)) {
         items(speciesList) { species ->
-            ListItem(title = species.speciesName, subTitle = species.classification)
+            ListItem(title = species.speciesName,
+                subTitle = species.classification,
+                onClick = { onSpeciesClick(species) }
+            )
         }
     }
 }

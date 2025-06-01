@@ -25,6 +25,7 @@ import com.hannes.starwars.data.fakes.dummyCharacters
 import com.hannes.starwars.data.fakes.dummyEntityMovie
 import com.hannes.starwars.data.fakes.dummyMovie
 import com.hannes.starwars.data.fakes.dummySpecies
+import com.hannes.starwars.data.local.model.PlanetEntity
 import com.hannes.starwars.ui.components.CategoryTitle
 import com.hannes.starwars.ui.components.ListItem
 import com.hannes.starwars.ui.components.MovieRow
@@ -36,6 +37,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun PlanetDetailScreen(
+    planet: PlanetEntity,
     modifier: Modifier = Modifier,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
@@ -43,7 +45,7 @@ fun PlanetDetailScreen(
     val films = viewModel.filmEntities.collectAsState()
     val planets = viewModel.planetEntities.collectAsState()
     val characters = viewModel.characterEntities.collectAsState()
-
+val species = viewModel.speciesEntities.collectAsState()
     Column(
         modifier = Modifier,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -54,13 +56,13 @@ fun PlanetDetailScreen(
         )
         Spacer(modifier.padding(vertical = 8.dp))
         Text(
-            text = "tatooine",
+            text = planet.planetName,
             fontFamily = basic,
             style = MaterialTheme.typography.headlineSmall,
             color = starWarsOrange,
         )
         Text(
-            text = "tatooine",
+            text = planet.planetName,
             fontFamily = starwarsfont,
             color = starWarsOrange,
             fontSize = 17.sp
@@ -98,7 +100,7 @@ fun PlanetDetailScreen(
 
                             )
                         Text(
-                            text = "23",
+                            text = planet.rotation_period ?: "-",
 
                             )
                     }
@@ -111,7 +113,7 @@ fun PlanetDetailScreen(
 
                             )
                         Text(
-                            text = "304",
+                            text = planet.orbital_period ?: "-",
 
                             )
                     }
@@ -124,7 +126,7 @@ fun PlanetDetailScreen(
 
                             )
                         Text(
-                            text = "10465",
+                            text = planet.diameter ?: "-",
                         )
                     }
 
@@ -136,7 +138,7 @@ fun PlanetDetailScreen(
 
                             )
                         Text(
-                            text = "arid",
+                            text = planet.climate ?: "-",
                         )
                     }
 
@@ -153,7 +155,7 @@ fun PlanetDetailScreen(
 
                             )
                         Text(
-                            text = "1 standard",
+                            text = planet.gravity ?: "-",
 
                             )
                     }
@@ -165,7 +167,7 @@ fun PlanetDetailScreen(
 
                             )
                         Text(
-                            text = "dessert",
+                            text = planet.terrain ?: "-",
 
                             )
                     }
@@ -177,7 +179,7 @@ fun PlanetDetailScreen(
 
                             )
                         Text(
-                            text = "1%",
+                            text = planet.surface_water ?: "-",
 
 
                             )
@@ -190,7 +192,7 @@ fun PlanetDetailScreen(
 
                             )
                         Text(
-                            text = "200000",
+                            text = planet.population ?: "-",
 
                             )
                     }
@@ -203,22 +205,25 @@ fun PlanetDetailScreen(
         LazyColumn(modifier.padding(8.dp)) {
             item {
                 Spacer(modifier.padding(vertical = 8.dp))
-                MovieRow(movieList = dummyEntityMovie)
+                MovieRow(
+                    movieList = viewModel.filmEntities.collectAsState().value,
+                    onMovieClick = { }
+                )
                 CategoryTitle(
                     text = "residents"
                 )
 
                 LazyColumn(modifier = Modifier.height(160.dp)) {
-                    items(dummyCharacters) { char ->
-                        ListItem(title = char.name, subTitle = char.birth_year)
+                    items(characters.value) { char ->
+                        ListItem(title = char.characterName, subTitle = char.birth_year)
                     }
                 }
                 CategoryTitle(
                     text = "Species"
                 )
                 LazyColumn(modifier = Modifier.height(160.dp)) {
-                    items(dummySpecies) { species ->
-                        ListItem(title = species.name, subTitle = species.classification)
+                    items(species.value) { species ->
+                        ListItem(title = species.speciesName, subTitle = species.classification)
                     }
                 }
             }

@@ -1,5 +1,7 @@
 package com.hannes.starwars.ui.components
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,12 +21,13 @@ import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 import com.hannes.starwars.ui.viewmodel.HomescreenViewModel
 import org.koin.androidx.compose.koinViewModel
-
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MovieList(
     modifier: Modifier = Modifier,
     movieList: List<FilmEntity>,
-    viewModel: HomescreenViewModel = koinViewModel()
+    viewModel: HomescreenViewModel = koinViewModel(),
+    onMovieLongClick: (FilmEntity) -> Unit
 ) {
 
     CategoryTitle("Movies", modifier.padding(horizontal = 8.dp))
@@ -33,7 +36,12 @@ fun MovieList(
             Card(
                 Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 8.dp, vertical = 4.dp),
+                    .padding(horizontal = 8.dp, vertical = 4.dp)
+                    .combinedClickable(
+                        onClick = { viewModel.onFilmCardClicked(movie.title) },
+                        onLongClick = { onMovieLongClick(movie) }
+                    ),
+
                 colors = CardDefaults.cardColors(
                     containerColor = Color(0xFF1C1C1E)
                 )

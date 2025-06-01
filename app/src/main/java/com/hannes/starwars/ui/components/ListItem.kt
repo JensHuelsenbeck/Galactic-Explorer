@@ -1,5 +1,6 @@
 package com.hannes.starwars.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,12 +24,16 @@ import com.hannes.starwars.ui.theme.starwarsfont
 fun ListItem(
     title: String,
     subTitle: String?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null
 ) {
     Card(
         Modifier
             .width(300.dp)
-            .padding(horizontal = 8.dp, vertical = 4.dp),
+            .padding(horizontal = 8.dp, vertical = 4.dp)
+            .let { baseModifier ->
+                if (onClick != null) baseModifier.clickable { onClick() } else baseModifier
+            },
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFF1C1C1E)
         )

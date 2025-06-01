@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hannes.starwars.R
 import com.hannes.starwars.data.local.model.FilmEntity
+import com.hannes.starwars.navigation.DetailsRoute
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 import com.hannes.starwars.ui.viewmodel.HomescreenViewModel
@@ -42,6 +43,7 @@ fun extractYearFromDate(dateString: String): String {
 fun MovieCard(
     movie: FilmEntity,
     modifier: Modifier = Modifier,
+    onLongClick: () -> Unit,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
     Card(
@@ -51,7 +53,8 @@ fun MovieCard(
             .fillMaxWidth()
             .width(275.dp)
             .combinedClickable(
-                onClick = { viewModel.onFilmCardClicked(movie.title) }
+                onClick = { viewModel.onFilmCardClicked(movie.title) },
+                onLongClick = onLongClick
             ),
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFF1C1C1E)

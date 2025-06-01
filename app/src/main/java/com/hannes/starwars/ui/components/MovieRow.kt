@@ -12,14 +12,19 @@ import com.hannes.starwars.data.local.model.FilmEntity
 @Composable
 fun MovieRow(
     movieList: List<FilmEntity>,
+    onMovieClick: (FilmEntity) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column {
-        CategoryTitle("Movies",  modifier.padding(horizontal = 8.dp))
+        CategoryTitle("Movies", modifier.padding(horizontal = 8.dp))
         LazyRow {
-
-            items(movieList) {
-                MovieCard(it)
+            items(movieList) { movie ->
+                MovieCard(
+                    movie = movie,
+                    onLongClick = {
+                        onMovieClick(movie)
+                    }
+                )
             }
         }
     }

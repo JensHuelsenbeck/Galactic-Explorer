@@ -14,13 +14,17 @@ import com.hannes.starwars.data.model.Planet
 @Composable
 fun PlanetList(
     modifier: Modifier = Modifier,
-    planetList: List<PlanetEntity>
+    planetList: List<PlanetEntity>,
+    onPlanetClick: (PlanetEntity) -> Unit
 ) {
 
     CategoryTitle("Planets", modifier.padding(horizontal = 8.dp))
     LazyRow(modifier.height(80.dp)) {
         items(planetList) { planet ->
-            ListItem(title = planet.planetName, subTitle = planet.gravity + " G")
+            ListItem(title = planet.planetName,
+                subTitle = planet.gravity + " G",
+                onClick = { onPlanetClick(planet) }
+            )
         }
 
     }
