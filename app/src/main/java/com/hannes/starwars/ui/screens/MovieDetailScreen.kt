@@ -180,7 +180,13 @@ fun MovieDetailScreen(
                     text = "residents"
                 )
 
-                CharacterList(characterList = characters.value)
+                CharacterList(
+                    characterList = viewModel.characterEntities.collectAsState().value,
+                    onCharacterClick = { character ->
+                        navController.navigate(DetailsRoute("character", character.characterName))
+                    }
+                )
+
                 CategoryTitle(
                     text = "Species"
                 )

@@ -49,7 +49,13 @@ fun HomeScreen(
             }
         )
         Spacer(Modifier.height(8.dp))
-        CharacterList(characterList = charactersForFilm.value)
+        CharacterList(
+            characterList = viewModel.characterEntities.collectAsState().value,
+            onCharacterClick = { character ->
+                navController.navigate(DetailsRoute("character", character.characterName))
+            }
+        )
+
         Spacer(Modifier.height(8.dp))
         PlanetList(
             planetList = planetsForFilm.value,

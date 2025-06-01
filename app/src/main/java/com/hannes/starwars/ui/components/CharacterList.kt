@@ -9,17 +9,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.hannes.starwars.data.fakes.dummyCharacters
 import com.hannes.starwars.data.local.model.CharacterEntity
+import com.hannes.starwars.data.local.model.SpeciesEntity
 
 @Composable
 fun CharacterList(
     modifier: Modifier = Modifier,
+    onCharacterClick: (CharacterEntity) -> Unit,
     characterList: List<CharacterEntity>
     ) {
     CategoryTitle(text = "Characters")
 
     LazyRow(modifier = Modifier.height(80.dp)) {
         items(characterList) { char ->
-            ListItem(title = char.characterName, subTitle = char.birth_year)
-        }
+            ListItem(
+                title = char.characterName,
+                subTitle = char.birth_year,
+                onClick = { onCharacterClick(char) }
+            )        }
     }
 }

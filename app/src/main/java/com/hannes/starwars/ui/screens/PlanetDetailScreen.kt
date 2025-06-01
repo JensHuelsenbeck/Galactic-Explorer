@@ -206,7 +206,7 @@ val species = viewModel.speciesEntities.collectAsState()
             item {
                 Spacer(modifier.padding(vertical = 8.dp))
                 MovieRow(
-                    movieList = viewModel.filmEntities.collectAsState().value,
+                    movieList = films.value,
                     onMovieClick = { }
                 )
                 CategoryTitle(

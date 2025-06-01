@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.hannes.starwars.R
 import com.hannes.starwars.data.local.model.CharacterEntity
 import com.hannes.starwars.ui.components.CategoryTitle
@@ -190,7 +191,7 @@ val species = viewModel.speciesEntities.collectAsState()
             item {
                 Spacer(modifier.padding(vertical = 8.dp))
                 MovieRow(
-                    movieList = viewModel.filmEntities.collectAsState().value,
+                    movieList = films.value,
                     onMovieClick = { }
                 )
                 CategoryTitle(
