@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.hannes.starwars.data.local.model.PlanetEntity
 import kotlinx.coroutines.flow.Flow
@@ -23,4 +24,8 @@ interface PlanetDao {
 
     @Update
     suspend fun update(planet: PlanetEntity)
+
+    @Transaction
+    @Query("SELECT * from planets WHERE planetId IN (:ids)")
+    fun getPlanetsForFilm(ids: List<String>): Flow<List<PlanetEntity>>
 }

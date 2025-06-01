@@ -1,6 +1,8 @@
 package com.hannes.starwars.ui.components
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -35,6 +37,7 @@ fun extractYearFromDate(dateString: String): String {
 }
 
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MovieCard(
     movie: FilmEntity,
@@ -46,7 +49,10 @@ fun MovieCard(
             .padding(vertical = 4.dp)
             .padding(horizontal = 6.dp)
             .fillMaxWidth()
-            .width(275.dp),
+            .width(275.dp)
+            .combinedClickable(
+                onClick = { viewModel.onFilmCardClicked(movie.title) }
+            ),
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFF1C1C1E)
         ),

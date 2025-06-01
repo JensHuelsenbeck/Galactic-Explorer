@@ -29,8 +29,13 @@ class CharacterRepository(
         return allCharacters
     }
 
+    fun extractIdFromUrl(url: String): String {
+        return url.trimEnd('/').substringAfterLast('/')
+    }
+
     override suspend fun createCharacterEntity(character: Character): CharacterEntity {
         val characterEntity = CharacterEntity(
+            characterId = extractIdFromUrl(character.url),
             characterName = character.name.lowercase(),
             height = character.height.lowercase(),
             mass = character.mass.lowercase(),

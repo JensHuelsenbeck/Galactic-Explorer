@@ -4,9 +4,9 @@ import androidx.room.Entity
 
 @Entity(
     tableName = "film_species_cross_ref",
-    primaryKeys = ["filmUrl", "speciesUrl"]
+    primaryKeys = ["filmId", "speciesId"]
 )
 data class FilmSpeciesCrossRef(
-    val filmUrl: String,
-    val speciesUrl: String
+    val filmId: String,
+    val speciesId: String
 )

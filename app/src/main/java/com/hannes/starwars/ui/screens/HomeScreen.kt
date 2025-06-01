@@ -29,6 +29,10 @@ fun HomeScreen(
     val characters = viewModel.characterEntities.collectAsState()
     val species = viewModel.speciesEntities.collectAsState()
 
+    val planetsForFilm = viewModel.planetEntitiesforFilm.collectAsState()
+    val charactersForFilm = viewModel.characterEntitiesForFilm.collectAsState()
+    val speciesForFilm = viewModel.speciesEntitiesforFilm.collectAsState()
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -37,10 +41,10 @@ fun HomeScreen(
         Spacer(Modifier.height(8.dp))
         MovieRow(films.value)
         Spacer(Modifier.height(8.dp))
-        CharacterList(characterList = characters.value)
+        CharacterList(characterList = charactersForFilm.value)
         Spacer(Modifier.height(8.dp))
-        PlanetList(planetList = planets.value)
+        PlanetList(planetList = planetsForFilm.value)
         Spacer(Modifier.height(8.dp))
-        SpeciesList( speciesList = species.value)
+        SpeciesList( speciesList = speciesForFilm.value)
     }
 }

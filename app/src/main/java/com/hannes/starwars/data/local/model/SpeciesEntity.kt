@@ -2,12 +2,12 @@ package com.hannes.starwars.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.UUID
 
 @Entity(tableName = "species")
 data class SpeciesEntity(
 
     @PrimaryKey
+    val speciesId: String = "",
     val speciesName: String,
     val classification: String,
     val designation: String,

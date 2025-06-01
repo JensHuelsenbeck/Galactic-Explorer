@@ -2,12 +2,12 @@ package com.hannes.starwars.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.UUID
 
 @Entity(tableName = "planets")
 data class PlanetEntity(
 
     @PrimaryKey
+    val planetId: String = "",
     val planetName: String,
     val rotation_period: String,
     val orbital_period: String,

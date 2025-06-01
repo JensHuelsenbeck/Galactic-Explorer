@@ -4,7 +4,7 @@ import androidx.room.Entity
 
 @Entity(
     tableName = "character_species_cross_ref",
-    primaryKeys = ["characterUrl", "speciesUrl"]
+    primaryKeys = ["characterId", "speciesId"]
 )
 data class CharacterSpeciesCrossRef(
     val characterUrl: String,

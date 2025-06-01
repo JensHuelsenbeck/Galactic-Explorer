@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.hannes.starwars.data.local.model.CharacterEntity
 import kotlinx.coroutines.flow.Flow
@@ -23,4 +24,8 @@ interface CharacterDao {
 
     @Update
     suspend fun update(character: CharacterEntity)
+
+    @Transaction
+    @Query("SELECT * from characters WHERE characterId IN (:ids)")
+    fun getCharactersForFilm(ids: List<String>): Flow<List<CharacterEntity>>
 }

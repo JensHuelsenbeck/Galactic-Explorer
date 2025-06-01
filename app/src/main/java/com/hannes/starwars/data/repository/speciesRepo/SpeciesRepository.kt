@@ -29,8 +29,13 @@ class SpeciesRepository(
         return allSpecies
     }
 
+    fun extractIdFromUrl(url: String): String {
+        return url.trimEnd('/').substringAfterLast('/')
+    }
+
     override suspend fun createSpeciesEntity(species: Species): SpeciesEntity {
         return SpeciesEntity(
+            speciesId = extractIdFromUrl(species.url),
             speciesName = species.name.lowercase(),
             classification = species.classification.lowercase(),
             designation = species.designation.lowercase(),

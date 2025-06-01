@@ -5,7 +5,6 @@ import com.hannes.starwars.R
 import com.hannes.starwars.data.local.model.FilmEntity
 import com.hannes.starwars.data.model.Film
 import com.hannes.starwars.data.remote.ApiService
-import kotlinx.coroutines.delay
 
 
 class FilmRepository(
@@ -19,11 +18,15 @@ class FilmRepository(
             throw Exception("API Error: ${response.code()}")
         }
     }
+    fun extractIdFromUrl(url: String): String {
+        return url.trimEnd('/').substringAfterLast('/')
+    }
 
     override suspend fun movieIntoDb(movie: Film): FilmEntity {
         Log.d("Database", "Inserting movie: $movie")
         val filmEntity = FilmEntity(
-            title = movie.title.lowercase(),
+            filmId = extractIdFromUrl(movie.url),
+            title = movie.title,
             episode_id = movie.episode_id,
             opening_crawl = movie.opening_crawl.lowercase(),
             director = movie.director.lowercase(),

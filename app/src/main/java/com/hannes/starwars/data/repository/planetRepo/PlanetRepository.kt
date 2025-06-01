@@ -29,8 +29,13 @@ class PlanetRepository(
         return allPlanets
     }
 
+    fun extractIdFromUrl(url: String): String {
+        return url.trimEnd('/').substringAfterLast('/')
+    }
+
     override suspend fun createPlanetEntity(planet: Planet): PlanetEntity {
         val planetEntity = PlanetEntity(
+            planetId = extractIdFromUrl(planet.url),
             planetName = planet.name.lowercase(),
             rotation_period = planet.rotation_period.lowercase(),
             orbital_period = planet.orbital_period.lowercase(),
