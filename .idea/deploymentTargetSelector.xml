@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="StarWars.app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-05-30T07:35:46.840197700Z">
+        <DropdownSelection timestamp="2025-06-01T22:08:42.364476500Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\granw\.android\avd\Pixel_9_Pro.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\h4nn3\.android\avd\Pixel_9_Pro_XL.avd" />
             </handle>
           </Target>
         </DropdownSelection>

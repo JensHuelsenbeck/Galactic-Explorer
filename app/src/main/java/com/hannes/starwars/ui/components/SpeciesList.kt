@@ -2,7 +2,6 @@ package com.hannes.starwars.ui.components
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -19,7 +18,7 @@ fun SpeciesList(
 ) {
     CategoryTitle("Species", modifier.padding(horizontal = 8.dp))
 
-    LazyRow(modifier = Modifier.height(160.dp)) {
+    LazyRow(modifier = Modifier.height(80.dp)) {
         items(speciesList) { species ->
             ListItem(title = species.speciesName,
                 subTitle = species.classification,

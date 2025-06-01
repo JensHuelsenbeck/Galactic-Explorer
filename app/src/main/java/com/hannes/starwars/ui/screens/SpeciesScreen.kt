@@ -39,8 +39,6 @@ fun SpeciesScreen(
     navController: NavHostController,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
-
-    val films = viewModel.filmEntities.collectAsState()
     val planets = viewModel.planetEntities.collectAsState()
     val characters = viewModel.characterEntities.collectAsState()
     val speciess = viewModel.speciesEntities.collectAsState()
@@ -86,6 +84,7 @@ fun SpeciesScreen(
             Row(
                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
             ) {
+
                 Column {
                     Row {
                         Text(
@@ -107,7 +106,7 @@ fun SpeciesScreen(
                     }
                     Row {
                         Text(
-                            text = "Average height: ",
+                            text = "Height: ",
                             color = starWarsOrange,
                         )
                         Text(
@@ -116,7 +115,7 @@ fun SpeciesScreen(
                     }
                     Row {
                         Text(
-                            text = "Average Livespan: ",
+                            text = "Livespan: ",
                             color = starWarsOrange,
 
                             )
@@ -124,6 +123,9 @@ fun SpeciesScreen(
                             text = "${species.average_lifespan} years",
                         )
                     }
+                }
+                Spacer(Modifier.weight(1f))
+                Column {
                     Row {
                         Text(
                             text = "Language: ",

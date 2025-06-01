@@ -25,6 +25,7 @@ import com.hannes.starwars.ui.components.Header
 import com.hannes.starwars.ui.components.MovieRow
 import com.hannes.starwars.ui.components.PlanetList
 import com.hannes.starwars.ui.components.SpeciesList
+import com.hannes.starwars.ui.components.StarWarsFactText
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 import com.hannes.starwars.ui.viewmodel.HomescreenViewModel
@@ -32,9 +33,9 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HomeScreen(
+    modifier: Modifier = Modifier,
     viewModel: HomescreenViewModel = koinViewModel(),
-    navController: NavHostController,
-    modifier: Modifier = Modifier
+    navController: NavHostController
 ) {
 
 
@@ -49,17 +50,19 @@ fun HomeScreen(
 
     var showAll by rememberSaveable { mutableStateOf(true) }
 
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Header()
         Spacer(Modifier.height(8.dp))
-        Row(modifier.fillMaxWidth(),
+        Row(
+            modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.End
-            ) {
+        ) {
             Text(
-                text = if(!showAll) "show all" else "show Movies",
+                text = if (!showAll) "show all" else "show Movies",
                 color = starWarsOrange,
                 fontFamily = starwarsfont,
                 modifier = modifier
@@ -68,7 +71,7 @@ fun HomeScreen(
                     )
             )
         }
-        if(!showAll) {
+        if (!showAll) {
             MovieRow(
                 movieList = films.value,
                 onMovieClick = { selectedMovie ->
@@ -78,7 +81,7 @@ fun HomeScreen(
         }
         Spacer(Modifier.height(8.dp))
         CharacterList(
-            characterList = if(!showAll) charactersForFilm.value else characters.value,
+            characterList = if (!showAll) charactersForFilm.value else characters.value,
             onCharacterClick = { character ->
                 navController.navigate(DetailsRoute("character", character.characterName))
             }
@@ -86,16 +89,20 @@ fun HomeScreen(
 
         Spacer(Modifier.height(8.dp))
         PlanetList(
-            planetList = if(!showAll) planetsForFilm.value else planets.value,
+            planetList = if (!showAll) planetsForFilm.value else planets.value,
             onPlanetClick = { selectedPlanet ->
                 navController.navigate(DetailsRoute("planet", selectedPlanet.planetName))
             }
         )
         Spacer(Modifier.height(8.dp))
-        SpeciesList( speciesList = if(!showAll) speciesForFilm.value else species.value,
+        SpeciesList(
+            speciesList = if (!showAll) speciesForFilm.value else species.value,
             onSpeciesClick = { selectedSpecies ->
                 navController.navigate(DetailsRoute("species", selectedSpecies.speciesName))
             }
         )
+
+        if (showAll) StarWarsFactText()
+        Spacer(Modifier.weight(1f))
     }
 }

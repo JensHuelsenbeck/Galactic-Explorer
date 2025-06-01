@@ -39,11 +39,10 @@ fun CharacterDetailScreen(
     navController: NavHostController,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
-
-    val films = viewModel.filmEntities.collectAsState()
     val planets = viewModel.planetEntities.collectAsState()
     val characters = viewModel.characterEntities.collectAsState()
-val species = viewModel.speciesEntities.collectAsState()
+    val species = viewModel.speciesEntities.collectAsState()
+
     Column(
         modifier = Modifier,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -93,23 +92,23 @@ val species = viewModel.speciesEntities.collectAsState()
 
                     Row {
                         Text(
-                            text = "height: ",
+                            text = "Height: ",
                             color = starWarsOrange,
 
                             )
                         Text(
                             text = "${char.height} cm",
-                            )
+                        )
                     }
                     Row {
                         Text(
                             text = "Weight: ",
                             color = starWarsOrange
-                            )
+                        )
                         Text(
                             text = char.mass
 
-                            )
+                        )
                     }
                     Row {
                         Text(
@@ -150,7 +149,7 @@ val species = viewModel.speciesEntities.collectAsState()
                         Text(
                             text = char.eye_color
 
-                            )
+                        )
                     }
 
                     Row {
@@ -198,7 +197,8 @@ val species = viewModel.speciesEntities.collectAsState()
                     }
                 )
                 Spacer(Modifier.height(8.dp))
-                SpeciesList( speciesList = species.value,
+                SpeciesList(
+                    speciesList = species.value,
                     onSpeciesClick = { selectedSpecies ->
                         navController.navigate(DetailsRoute("species", selectedSpecies.speciesName))
                     }

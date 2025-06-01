@@ -39,8 +39,6 @@ fun PlanetDetailScreen(
     navController: NavHostController,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
-
-    val films = viewModel.filmEntities.collectAsState()
     val planets = viewModel.planetEntities.collectAsState()
     val characters = viewModel.characterEntities.collectAsState()
     val species = viewModel.speciesEntities.collectAsState()
@@ -93,50 +91,50 @@ fun PlanetDetailScreen(
 
                     Row {
                         Text(
-                            text = "rotation period: ",
+                            text = "Rotation period: ",
                             color = starWarsOrange,
 
                             )
                         Text(
-                            text = planet.rotation_period ?: "-",
+                            text = planet.rotation_period,
 
                             )
                     }
 
                     Row {
                         Text(
-                            text = "orbital period: ",
+                            text = "Orbital period: ",
                             color = starWarsOrange,
 
 
                             )
                         Text(
-                            text = planet.orbital_period ?: "-",
+                            text = planet.orbital_period,
 
                             )
                     }
 
                     Row {
                         Text(
-                            text = "diameter: ",
+                            text = "Diameter: ",
                             color = starWarsOrange,
 
 
                             )
                         Text(
-                            text = planet.diameter ?: "-",
+                            text = planet.diameter,
                         )
                     }
 
                     Row {
                         Text(
-                            text = "climate: ",
+                            text = "Climate: ",
                             color = starWarsOrange,
 
 
                             )
                         Text(
-                            text = planet.climate ?: "-",
+                            text = planet.climate,
                         )
                     }
 
@@ -148,36 +146,36 @@ fun PlanetDetailScreen(
 
                     Row {
                         Text(
-                            text = "gravity: ",
+                            text = "Gravity: ",
                             color = starWarsOrange,
 
                             )
                         Text(
-                            text = planet.gravity ?: "-",
+                            text = planet.gravity,
 
                             )
                     }
 
                     Row {
                         Text(
-                            text = "terrain: ",
+                            text = "Terrain: ",
                             color = starWarsOrange,
 
                             )
                         Text(
-                            text = planet.terrain ?: "-",
+                            text = planet.terrain,
 
                             )
                     }
 
                     Row {
                         Text(
-                            text = "surface water: ",
+                            text = "Surface water: ",
                             color = starWarsOrange,
 
                             )
                         Text(
-                            text = planet.surface_water ?: "-",
+                            text = planet.surface_water,
 
 
                             )
@@ -185,12 +183,12 @@ fun PlanetDetailScreen(
 
                     Row {
                         Text(
-                            text = "population: ",
+                            text = "Population: ",
                             color = starWarsOrange,
 
                             )
                         Text(
-                            text = planet.population ?: "-",
+                            text = planet.population,
 
                             )
                     }
