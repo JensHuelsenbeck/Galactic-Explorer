@@ -2,6 +2,8 @@ package com.hannes.starwars.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
+
 
 @Entity(tableName = "characters")
 data class CharacterEntity(

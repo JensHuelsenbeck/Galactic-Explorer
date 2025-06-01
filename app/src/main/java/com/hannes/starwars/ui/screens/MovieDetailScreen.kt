@@ -48,7 +48,7 @@ fun MovieDetailScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(R.drawable.ic_launcher_background),
+            painter = painterResource(movie.filmImage ?: R.drawable.starwars_logo),
             contentDescription = null
         )
         Spacer(modifier.padding(vertical = 8.dp))

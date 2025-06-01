@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -21,11 +22,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hannes.starwars.R
-import com.hannes.starwars.data.local.model.SpeciesEntity
+import com.hannes.starwars.data.local.model.CharacterEntity
 import com.hannes.starwars.ui.components.CategoryTitle
 import com.hannes.starwars.ui.components.ListItem
 import com.hannes.starwars.ui.components.MovieRow
-import com.hannes.starwars.ui.components.PlanetList
 import com.hannes.starwars.ui.theme.basic
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
@@ -33,8 +33,8 @@ import com.hannes.starwars.ui.viewmodel.HomescreenViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun SpeciesScreen(
-    species: SpeciesEntity,
+fun CharacterDetailScreen(
+    char: CharacterEntity,
     modifier: Modifier = Modifier,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
@@ -42,24 +42,24 @@ fun SpeciesScreen(
     val films = viewModel.filmEntities.collectAsState()
     val planets = viewModel.planetEntities.collectAsState()
     val characters = viewModel.characterEntities.collectAsState()
-
+val species = viewModel.speciesEntities.collectAsState()
     Column(
         modifier = Modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(R.drawable.ic_launcher_foreground),
+            painter = painterResource(R.drawable.tatooine),
             contentDescription = null
         )
         Spacer(modifier.padding(vertical = 8.dp))
         Text(
-            text = species.speciesName,
+            text = char.characterName,
             fontFamily = basic,
             style = MaterialTheme.typography.headlineSmall,
             color = starWarsOrange,
         )
         Text(
-            text = species.speciesName,
+            text = char.characterName,
             fontFamily = starwarsfont,
             color = starWarsOrange,
             fontSize = 17.sp
@@ -73,7 +73,7 @@ fun SpeciesScreen(
         ) {
 
             Text(
-                text = "species details",
+                text = "Character Details",
                 fontFamily = starwarsfont,
                 color = starWarsOrange,
                 style = MaterialTheme.typography.bodyLarge,
@@ -92,50 +92,50 @@ fun SpeciesScreen(
 
                     Row {
                         Text(
-                            text = "classification: ",
+                            text = "height: ",
                             color = starWarsOrange,
 
                             )
                         Text(
-                            text = species.classification,
+                            text = "${char.height} cm",
 
                             )
                     }
 
                     Row {
                         Text(
-                            text = "designation: ",
-                            color = starWarsOrange,
+                            text = "Weight: ",
+                            color = starWarsOrange
 
 
                             )
                         Text(
-                            text = species.designation ?: "-",
+                            text = char.mass
 
                             )
                     }
 
                     Row {
                         Text(
-                            text = "average height: ",
+                            text = "Hair color: ",
                             color = starWarsOrange,
 
 
                             )
                         Text(
-                            text = species.average_height ?: "-",
+                            text = char.hair_color,
                         )
                     }
 
                     Row {
                         Text(
-                            text = "skin colors: ",
+                            text = "Skin color: ",
                             color = starWarsOrange,
 
 
                             )
                         Text(
-                            text = species.skin_colors ?: "-",
+                            text = char.skin_color,
                         )
                     }
 
@@ -147,42 +147,40 @@ fun SpeciesScreen(
 
                     Row {
                         Text(
-                            text = "language: ",
+                            text = "Eye color: ",
                             color = starWarsOrange,
 
                             )
                         Text(
-                            text = species.language ?: "-",
-                            )
-                    }
-
-                    Row {
-                        Text(
-                            text = "eye colors: ",
-                            color = starWarsOrange,
-
-                            )
-                        Text(
-                            text = species.eye_colors ?: "-",
+                            text = char.eye_color
 
                             )
                     }
 
                     Row {
                         Text(
-                            text = "average lifespan: ",
+                            text = "Birth year: ",
                             color = starWarsOrange,
 
                             )
                         Text(
-                            text = species.average_lifespan ?: "-",
-
+                            text = char.birth_year,
 
                             )
                     }
 
+                    Row {
+                        Text(
+                            text = "Gender: ",
+                            color = starWarsOrange,
+
+                            )
+                        Text(
+                            text = char.gender,
 
 
+                            )
+                    }
                 }
                 Spacer(Modifier.weight(1f))
 
@@ -192,24 +190,27 @@ fun SpeciesScreen(
             item {
                 Spacer(modifier.padding(vertical = 8.dp))
                 MovieRow(
-                    movieList = films.value,
+                    movieList = viewModel.filmEntities.collectAsState().value,
                     onMovieClick = { }
                 )
+                CategoryTitle(
+                    text = "residents"
+                )
 
-                CategoryTitle(text = "characters")
-
-                LazyColumn(modifier = Modifier.height(160.dp)) {
+                LazyRow(modifier = Modifier.height(160.dp)) {
                     items(characters.value) { char ->
                         ListItem(title = char.characterName, subTitle = char.birth_year)
                     }
                 }
                 CategoryTitle(
-                    text = "planets"
+                    text = "Species"
                 )
-                PlanetList(
-                    planetList = planets.value,
-                    onPlanetClick = { }
-                )            }
+                LazyRow(modifier = Modifier.height(160.dp)) {
+                    items(species.value) { species ->
+                        ListItem(title = species.speciesName, subTitle = species.classification)
+                    }
+                }
+            }
         }
     }
 }

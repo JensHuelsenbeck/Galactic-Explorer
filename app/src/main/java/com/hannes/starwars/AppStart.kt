@@ -3,7 +3,6 @@ package com.hannes.starwars.ui.screens
 import android.app.Application
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -15,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
@@ -26,7 +26,7 @@ import com.hannes.starwars.navigation.HomeRoute
 import com.hannes.starwars.ui.theme.StarWarsTheme
 import com.hannes.starwars.ui.viewmodel.HomescreenViewModel
 import org.koin.androidx.compose.koinViewModel
-import androidx.compose.runtime.getValue
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppStart(modifier: Modifier = Modifier) {
@@ -105,11 +105,16 @@ fun AppStart(modifier: Modifier = Modifier) {
                                 PlanetDetailScreen(planet = it)
                             }
                         }
+                        "character" -> {
+                            val character = viewModel.characterEntities.collectAsState().value
+                                .firstOrNull { it.characterName == data }
+                            character?.let {
+                                CharacterDetailScreen(char = it)
+                            }
+                        }
                     }
                 }
-
             }
-
         }
     }
 }

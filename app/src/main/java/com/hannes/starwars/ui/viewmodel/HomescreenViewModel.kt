@@ -20,6 +20,7 @@ import com.hannes.starwars.data.repository.CharacterRepo.CharacterRepositoryInte
 import com.hannes.starwars.data.repository.movieRepo.FilmRepositoryInterface
 import com.hannes.starwars.data.repository.planetRepo.PlanetRepositoryInterface
 import com.hannes.starwars.data.repository.speciesRepo.SpeciesRepositoryInterface
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -140,6 +141,7 @@ class HomescreenViewModel(
 
     private val _selectedFilmTitle = MutableStateFlow<String?>(null)
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val planetEntitiesforFilm: StateFlow<List<PlanetEntity>> = _selectedFilmTitle
         .filterNotNull()
         .flatMapLatest { title ->
@@ -174,6 +176,7 @@ class HomescreenViewModel(
             initialValue = emptyList()
         )
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val characterEntitiesForFilm: StateFlow<List<CharacterEntity>> = _selectedFilmTitle
         .filterNotNull()
         .flatMapLatest { title ->
@@ -209,6 +212,7 @@ class HomescreenViewModel(
             initialValue = emptyList()
         )
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val speciesEntitiesforFilm: StateFlow<List<SpeciesEntity>> = _selectedFilmTitle
         .filterNotNull()
         .flatMapLatest { title ->
