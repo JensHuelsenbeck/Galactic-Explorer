@@ -12,3 +12,4 @@ data class DetailsRoute(
     val type: String,
     val data: String
 )
+

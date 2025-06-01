@@ -50,7 +50,7 @@ fun HomeScreen(
         )
         Spacer(Modifier.height(8.dp))
         CharacterList(
-            characterList = viewModel.characterEntities.collectAsState().value,
+            characterList = charactersForFilm.value,
             onCharacterClick = { character ->
                 navController.navigate(DetailsRoute("character", character.characterName))
             }
@@ -67,6 +67,7 @@ fun HomeScreen(
         SpeciesList( speciesList = speciesForFilm.value,
             onSpeciesClick = { selectedSpecies ->
                 navController.navigate(DetailsRoute("species", selectedSpecies.speciesName))
-            })
+            }
+        )
     }
 }

@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -21,12 +19,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.hannes.starwars.R
 import com.hannes.starwars.data.local.model.CharacterEntity
-import com.hannes.starwars.ui.components.CategoryTitle
-import com.hannes.starwars.ui.components.ListItem
-import com.hannes.starwars.ui.components.MovieRow
+import com.hannes.starwars.navigation.DetailsRoute
+import com.hannes.starwars.ui.components.CharacterList
+import com.hannes.starwars.ui.components.PlanetList
+import com.hannes.starwars.ui.components.SpeciesList
 import com.hannes.starwars.ui.theme.basic
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
@@ -37,6 +36,7 @@ import org.koin.androidx.compose.koinViewModel
 fun CharacterDetailScreen(
     char: CharacterEntity,
     modifier: Modifier = Modifier,
+    navController: NavHostController,
     viewModel: HomescreenViewModel = koinViewModel()
 ) {
 
@@ -49,7 +49,7 @@ val species = viewModel.speciesEntities.collectAsState()
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(R.drawable.tatooine),
+            painter = painterResource(R.drawable.starwars_logo),
             contentDescription = null
         )
         Spacer(modifier.padding(vertical = 8.dp))
@@ -99,23 +99,18 @@ val species = viewModel.speciesEntities.collectAsState()
                             )
                         Text(
                             text = "${char.height} cm",
-
                             )
                     }
-
                     Row {
                         Text(
                             text = "Weight: ",
                             color = starWarsOrange
-
-
                             )
                         Text(
                             text = char.mass
 
                             )
                     }
-
                     Row {
                         Text(
                             text = "Hair color: ",
@@ -189,28 +184,25 @@ val species = viewModel.speciesEntities.collectAsState()
         }
         LazyColumn(modifier.padding(8.dp)) {
             item {
-                Spacer(modifier.padding(vertical = 8.dp))
-                MovieRow(
-                    movieList = films.value,
-                    onMovieClick = { }
-                )
-                CategoryTitle(
-                    text = "residents"
-                )
-
-                LazyRow(modifier = Modifier.height(160.dp)) {
-                    items(characters.value) { char ->
-                        ListItem(title = char.characterName, subTitle = char.birth_year)
+                CharacterList(
+                    characterList = characters.value,
+                    onCharacterClick = { character ->
+                        navController.navigate(DetailsRoute("character", character.characterName))
                     }
-                }
-                CategoryTitle(
-                    text = "Species"
                 )
-                LazyRow(modifier = Modifier.height(160.dp)) {
-                    items(species.value) { species ->
-                        ListItem(title = species.speciesName, subTitle = species.classification)
+                Spacer(Modifier.height(8.dp))
+                PlanetList(
+                    planetList = planets.value,
+                    onPlanetClick = { selectedPlanet ->
+                        navController.navigate(DetailsRoute("planet", selectedPlanet.planetName))
                     }
-                }
+                )
+                Spacer(Modifier.height(8.dp))
+                SpeciesList( speciesList = species.value,
+                    onSpeciesClick = { selectedSpecies ->
+                        navController.navigate(DetailsRoute("species", selectedSpecies.speciesName))
+                    }
+                )
             }
         }
     }

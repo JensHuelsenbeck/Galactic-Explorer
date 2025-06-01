@@ -79,7 +79,6 @@ fun MovieDetailScreen(
                         .padding(horizontal = 8.dp)
                         .padding(top = 8.dp)
                 )
-
                 Text(
                     text = "movie details",
                     fontFamily = starwarsfont,

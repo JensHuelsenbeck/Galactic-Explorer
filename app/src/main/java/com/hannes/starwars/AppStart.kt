@@ -95,21 +95,21 @@ fun AppStart(modifier: Modifier = Modifier) {
                             val species = viewModel.speciesEntities.collectAsState().value
                                 .firstOrNull { it.speciesName == data }
                             species?.let {
-                                SpeciesScreen(species = it)
+                                SpeciesScreen(species = it, navController = navcontroller)
                             }
                         }
                         "planet" -> {
                             val planet = viewModel.planetEntities.collectAsState().value
                                 .firstOrNull { it.planetName == data }
                             planet?.let {
-                                PlanetDetailScreen(planet = it)
+                                PlanetDetailScreen(planet = it, navController = navcontroller)
                             }
                         }
                         "character" -> {
                             val character = viewModel.characterEntities.collectAsState().value
                                 .firstOrNull { it.characterName == data }
                             character?.let {
-                                CharacterDetailScreen(char = it)
+                                CharacterDetailScreen(char = it, navController = navcontroller)
                             }
                         }
                     }
