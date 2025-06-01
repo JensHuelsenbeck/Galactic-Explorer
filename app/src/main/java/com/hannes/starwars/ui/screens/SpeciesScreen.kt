@@ -46,12 +46,10 @@ fun SpeciesScreen(
     val speciess = viewModel.speciesEntities.collectAsState()
 
     Column(
-        modifier = Modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier, horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(R.drawable.starwars_logo),
-            contentDescription = null
+            painter = painterResource(R.drawable.starwars_logo), contentDescription = null
         )
         Spacer(modifier.padding(vertical = 8.dp))
         Text(
@@ -75,7 +73,7 @@ fun SpeciesScreen(
         ) {
 
             Text(
-                text = "species details",
+                text = "Character Details",
                 fontFamily = starwarsfont,
                 color = starWarsOrange,
                 style = MaterialTheme.typography.bodyLarge,
@@ -86,131 +84,103 @@ fun SpeciesScreen(
 
 
             Row(
-                modifier = Modifier
-                    .padding(horizontal = 8.dp, vertical = 4.dp)
-
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
             ) {
                 Column {
-
                     Row {
                         Text(
-                            text = "classification: ",
+                            text = "Classification: ",
                             color = starWarsOrange,
 
                             )
                         Text(
                             text = species.classification,
-
-                            )
-                    }
-
-                    Row {
-                        Text(
-                            text = "designation: ",
-                            color = starWarsOrange,
-
-
-                            )
-                        Text(
-                            text = species.designation ?: "-",
-
-                            )
-                    }
-
-                    Row {
-                        Text(
-                            text = "average height: ",
-                            color = starWarsOrange,
-
-
-                            )
-                        Text(
-                            text = species.average_height ?: "-",
                         )
                     }
-
                     Row {
                         Text(
-                            text = "skin colors: ",
-                            color = starWarsOrange,
-
-
-                            )
+                            text = "Designation: ", color = starWarsOrange
+                        )
                         Text(
-                            text = species.skin_colors ?: "-",
+                            text = species.designation,
                         )
                     }
+                    Row {
+                        Text(
+                            text = "Average height: ",
+                            color = starWarsOrange,
+                        )
+                        Text(
+                            text = "${species.average_height} cm",
+                        )
+                    }
+                    Row {
+                        Text(
+                            text = "Average Livespan: ",
+                            color = starWarsOrange,
 
+                            )
+                        Text(
+                            text = "${species.average_lifespan} years",
+                        )
+                    }
+                    Row {
+                        Text(
+                            text = "Language: ",
+                            color = starWarsOrange,
+                        )
+                        Text(
+                            text = species.language,
+                        )
+                    }
+                    Row {
+                        Text(
+                            text = "Skin color: ",
+                            color = starWarsOrange,
+                        )
+                        Text(
+                            text = species.skin_colors,
+                        )
+                    }
+                    Row {
+                        Text(
+                            text = "Hair color: ",
+                            color = starWarsOrange,
+                        )
+                        Text(
+                            text = species.hair_colors,
+                        )
+                    }
+                    Row {
+                        Text(
+                            text = "Eye color: ",
+                            color = starWarsOrange,
+
+                            )
+                        Text(
+                            text = species.eye_colors
+                        )
+                    }
                 }
-
                 Spacer(Modifier.weight(1f))
-
-                Column {
-
-                    Row {
-                        Text(
-                            text = "language: ",
-                            color = starWarsOrange,
-
-                            )
-                        Text(
-                            text = species.language ?: "-",
-                            )
-                    }
-
-                    Row {
-                        Text(
-                            text = "eye colors: ",
-                            color = starWarsOrange,
-
-                            )
-                        Text(
-                            text = species.eye_colors ?: "-",
-
-                            )
-                    }
-
-                    Row {
-                        Text(
-                            text = "average lifespan: ",
-                            color = starWarsOrange,
-
-                            )
-                        Text(
-                            text = species.average_lifespan ?: "-",
-
-
-                            )
-                    }
-
-
-
-                }
-                Spacer(Modifier.weight(1f))
-
             }
         }
         LazyColumn(modifier.padding(8.dp)) {
             item {
                 CharacterList(
-                    characterList = characters.value,
-                    onCharacterClick = { character ->
+                    characterList = characters.value, onCharacterClick = { character ->
                         navController.navigate(DetailsRoute("character", character.characterName))
-                    }
-                )
+                    })
                 Spacer(Modifier.height(8.dp))
                 PlanetList(
-                    planetList = planets.value,
-                    onPlanetClick = { selectedPlanet ->
+                    planetList = planets.value, onPlanetClick = { selectedPlanet ->
                         navController.navigate(DetailsRoute("planet", selectedPlanet.planetName))
-                    }
-                )
+                    })
                 Spacer(Modifier.height(8.dp))
-                SpeciesList( speciesList = speciess.value,
-                    onSpeciesClick = { selectedSpecies ->
+                SpeciesList(
+                    speciesList = speciess.value, onSpeciesClick = { selectedSpecies ->
                         navController.navigate(DetailsRoute("species", selectedSpecies.speciesName))
-                    }
-                )
+                    })
             }
         }
     }

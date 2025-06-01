@@ -22,7 +22,6 @@ import androidx.navigation.NavController
 import com.hannes.starwars.R
 import com.hannes.starwars.data.local.model.FilmEntity
 import com.hannes.starwars.navigation.DetailsRoute
-import com.hannes.starwars.ui.components.CategoryTitle
 import com.hannes.starwars.ui.components.CharacterList
 import com.hannes.starwars.ui.components.PlanetList
 import com.hannes.starwars.ui.components.SpeciesList
@@ -174,21 +173,14 @@ fun MovieDetailScreen(
                         navController.navigate(DetailsRoute("planet", selectedPlanet.planetName))
                     }
                 )
-
-                CategoryTitle(
-                    text = "residents"
-                )
-
+                Spacer(modifier.padding(vertical = 8.dp))
                 CharacterList(
                     characterList = viewModel.characterEntities.collectAsState().value,
                     onCharacterClick = { character ->
                         navController.navigate(DetailsRoute("character", character.characterName))
                     }
                 )
-
-                CategoryTitle(
-                    text = "Species"
-                )
+                Spacer(modifier.padding(vertical = 8.dp))
                 SpeciesList(
                     speciesList = species.value,
                     onSpeciesClick = { selectedMovie ->

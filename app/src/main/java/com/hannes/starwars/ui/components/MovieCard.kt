@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hannes.starwars.R
 import com.hannes.starwars.data.local.model.FilmEntity
-import com.hannes.starwars.navigation.DetailsRoute
 import com.hannes.starwars.ui.theme.starWarsOrange
 import com.hannes.starwars.ui.theme.starwarsfont
 import com.hannes.starwars.ui.viewmodel.HomescreenViewModel
@@ -53,7 +52,8 @@ fun MovieCard(
             .fillMaxWidth()
             .width(275.dp)
             .combinedClickable(
-                onClick = { viewModel.onFilmCardClicked(movie.title) },
+                onClick = {
+                    viewModel.onFilmCardClicked(movie.title) },
                 onLongClick = onLongClick
             ),
         colors = CardDefaults.cardColors(

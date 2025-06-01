@@ -16,16 +16,15 @@ fun MovieRow(
     modifier: Modifier = Modifier
 ) {
     Column {
-        CategoryTitle("Movies", modifier.padding(horizontal = 8.dp))
+            CategoryTitle("Movies", modifier.padding(horizontal = 8.dp))
+        }
         LazyRow {
             items(movieList) { movie ->
                 MovieCard(
                     movie = movie,
-                    onLongClick = {
-                        onMovieClick(movie)
-                    }
+                    onLongClick = { onMovieClick(movie) },
+
                 )
             }
         }
     }
-}
